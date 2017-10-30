@@ -1,4 +1,4 @@
-package rahuldeewan.smartlearning;
+package com.rahuldeewan.smartlearning;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

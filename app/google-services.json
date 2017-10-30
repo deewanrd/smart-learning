@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "883750985290",
+    "firebase_url": "https://smartlearning-6ec39.firebaseio.com",
+    "project_id": "smartlearning-6ec39",
+    "storage_bucket": "smartlearning-6ec39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883750985290:android:a73471b1629744f8",
+        "android_client_info": {
+          "package_name": "com.rahuldeewan.smartlearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883750985290-uglqpsualfmn8qlqd1jm9ekau0j3sk00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC90CGMjANlnjBBdP3DKLWs47iKVHV8_DE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
