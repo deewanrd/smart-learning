@@ -5,15 +5,15 @@ package com.rahuldeewan.smartlearning;
  * Rahul on 02-11-2017.
  */
 
-public class Topics {
+public class Topic {
     private int ID;
     private String Name;
 
-    public Topics() {
+    public Topic() {
 
     }
 
-    public Topics(int id, String name) {
+    public Topic(int id, String name) {
         this.ID = id;
         this.Name = name;
     }

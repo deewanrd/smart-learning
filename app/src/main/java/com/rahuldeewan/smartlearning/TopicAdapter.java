@@ -17,12 +17,12 @@ import java.util.List;
  * on 04-11-2017.
  */
 
-public class TopicAdapter extends ArrayAdapter<Topics> {
+public class TopicAdapter extends ArrayAdapter<Topic> {
 
     private Activity context;
-    private List<Topics> topicsList = new ArrayList<>();
+    private List<Topic> topicsList = new ArrayList<>();
 
-    TopicAdapter(@NonNull Activity context, @NonNull List<Topics> topicsList) {
+    TopicAdapter(@NonNull Activity context, @NonNull List<Topic> topicsList) {
         super(context, 0, topicsList);
         this.context = context;
         this.topicsList = topicsList;
@@ -35,7 +35,7 @@ public class TopicAdapter extends ArrayAdapter<Topics> {
         if (listViewItem == null) {
             listViewItem = LayoutInflater.from(context).inflate(R.layout.topic_list_item, parent, false);
         }
-        Topics currentTopic = topicsList.get(position);
+        Topic currentTopic = topicsList.get(position);
         TextView tvTopicName = listViewItem.findViewById(R.id.tv_topic_name);
         tvTopicName.setText(currentTopic.getName());
 

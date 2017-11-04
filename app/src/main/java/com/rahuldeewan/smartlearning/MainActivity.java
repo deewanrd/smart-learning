@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     final Logger logger = Logger.getLogger("MainActivity");
     private DatabaseReference databaseReference;
-    private List<Topics> topicsList;
+    private List<Topic> topicsList;
     private ListView topicListView;
 
     @Override
@@ -38,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                topicsList.clear();
                 for (DataSnapshot topicKey : dataSnapshot.getChildren()) {
-                    Topics currentTopic = topicKey.getValue(Topics.class);
+                    Topic currentTopic = topicKey.getValue(Topic.class);
                     topicsList.add(currentTopic);
                 }
                 TopicAdapter topicAdapter = new TopicAdapter(MainActivity.this, topicsList);
