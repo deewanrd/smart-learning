@@ -1,7 +1,10 @@
 package com.rahuldeewan.smartlearning;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,7 +22,7 @@ public class LevelListActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private List<Level> levelList;
     private LevelAdapter levelAdapter;
-    private ListView listViewLevel;
+    private ListView levelListView;
     private Logger logger;
 
     @Override
@@ -27,10 +30,26 @@ public class LevelListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_list);
 
-        logger=Logger.getLogger("LevelListActivity");
-        databaseReference= FirebaseDatabase.getInstance().getReference("levels");
-        levelList=new ArrayList<>();
-        listViewLevel=findViewById(R.id.listview_level);
+        logger = Logger.getLogger("LevelListActivity");
+
+        Intent intent = getIntent();
+        int topicId = intent.getIntExtra("Topic_ID", 0);
+        String topicName = intent.getStringExtra("Topic_Name");
+        logger.info(topicName);
+        databaseReference = FirebaseDatabase.getInstance().getReference("levels");
+        levelList = new ArrayList<>();
+        levelListView = findViewById(R.id.listview_level);
+
+        levelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Level level=levelList.get(i);
+                Intent in=new Intent(LevelListActivity.this,QuestionListActivity.class);
+                in.putExtra("Level_Id",level.getID());
+                in.putExtra("Level_name",level.getName());
+                startActivity(in);
+            }
+        });
     }
 
     @Override
@@ -41,13 +60,13 @@ public class LevelListActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 levelList.clear();
-                logger.info(dataSnapshot+"12345678");
-                for(DataSnapshot levelKey:dataSnapshot.getChildren()){
-                    Level currentLevel=levelKey.getValue(Level.class);
+                logger.info(dataSnapshot + "12345678");
+                for (DataSnapshot levelKey : dataSnapshot.getChildren()) {
+                    Level currentLevel = levelKey.getValue(Level.class);
                     levelList.add(currentLevel);
                 }
-                levelAdapter=new LevelAdapter(LevelListActivity.this,levelList);
-                listViewLevel.setAdapter(levelAdapter);
+                levelAdapter = new LevelAdapter(LevelListActivity.this, levelList);
+                levelListView.setAdapter(levelAdapter);
             }
 
             @Override

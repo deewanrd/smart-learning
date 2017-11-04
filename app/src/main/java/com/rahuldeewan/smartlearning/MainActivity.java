@@ -3,6 +3,8 @@ package com.rahuldeewan.smartlearning;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +32,17 @@ public class MainActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("topics");
         topicsList = new ArrayList<>();
         topicListView = findViewById(R.id.listview_topic);
+
+        topicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Topic topic = topicsList.get(i);
+                Intent intent = new Intent(MainActivity.this, LevelListActivity.class);
+                intent.putExtra("Topic_ID", topic.getId());
+                intent.putExtra("Topic_Name", topic.getName());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -46,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 TopicAdapter topicAdapter = new TopicAdapter(MainActivity.this, topicsList);
                 topicListView.setAdapter(topicAdapter);
-
-                startActivity(new Intent(MainActivity.this,LevelListActivity.class));
             }
 
             @Override
