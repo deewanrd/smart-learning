@@ -1,8 +1,7 @@
 package com.rahuldeewan.smartlearning;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -15,21 +14,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class MainActivity extends AppCompatActivity {
+public class LevelListActivity extends AppCompatActivity {
 
-    final Logger logger = Logger.getLogger("MainActivity");
     private DatabaseReference databaseReference;
-    private List<Topic> topicsList;
-    private ListView topicListView;
+    private List<Level> levelList;
+    private LevelAdapter levelAdapter;
+    private ListView listViewLevel;
+    private Logger logger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_level_list);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("topics");
-        topicsList = new ArrayList<>();
-        topicListView = findViewById(R.id.listview_topic);
+        logger=Logger.getLogger("LevelListActivity");
+        databaseReference= FirebaseDatabase.getInstance().getReference("levels");
+        levelList=new ArrayList<>();
+        listViewLevel=findViewById(R.id.listview_level);
     }
 
     @Override
@@ -39,15 +40,14 @@ public class MainActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                topicsList.clear();
-                for (DataSnapshot topicKey : dataSnapshot.getChildren()) {
-                    Topic currentTopic = topicKey.getValue(Topic.class);
-                    topicsList.add(currentTopic);
+                levelList.clear();
+                logger.info(dataSnapshot+"12345678");
+                for(DataSnapshot levelKey:dataSnapshot.getChildren()){
+                    Level currentLevel=levelKey.getValue(Level.class);
+                    levelList.add(currentLevel);
                 }
-                TopicAdapter topicAdapter = new TopicAdapter(MainActivity.this, topicsList);
-                topicListView.setAdapter(topicAdapter);
-
-                startActivity(new Intent(MainActivity.this,LevelListActivity.class));
+                levelAdapter=new LevelAdapter(LevelListActivity.this,levelList);
+                listViewLevel.setAdapter(levelAdapter);
             }
 
             @Override
