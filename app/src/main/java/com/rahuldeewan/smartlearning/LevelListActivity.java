@@ -34,7 +34,7 @@ public class LevelListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int topicId = intent.getIntExtra("Topic_ID", 0);
-        String topicName = intent.getStringExtra("Topic_Name");
+        final String topicName = intent.getStringExtra("Topic_Name");
         logger.info(topicName);
         databaseReference = FirebaseDatabase.getInstance().getReference("levels");
         levelList = new ArrayList<>();
@@ -47,6 +47,7 @@ public class LevelListActivity extends AppCompatActivity {
                 Intent in=new Intent(LevelListActivity.this,QuestionListActivity.class);
                 in.putExtra("Level_Id",level.getID());
                 in.putExtra("Level_name",level.getName());
+                in.putExtra("Topic_name",topicName);
                 startActivity(in);
             }
         });
