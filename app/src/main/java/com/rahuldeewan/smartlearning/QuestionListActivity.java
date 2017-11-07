@@ -2,8 +2,14 @@ package com.rahuldeewan.smartlearning;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,10 +24,11 @@ import java.util.logging.Logger;
 public class QuestionListActivity extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
-    private List<Question>questionList;
+    private List<Question> questionList;
+    private ViewPager viewPager;
+    private PagerAdapter pagerAdapter;
     Logger logger;
-
-    private TextView quest,ans,op1,op2,op3,op4,hint,sol;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +41,10 @@ public class QuestionListActivity extends AppCompatActivity {
         String level_name = i.getStringExtra("Level_name");
         String topic_name = i.getStringExtra("Topic_name");
         logger.info(level_name);
+        viewPager = findViewById(R.id.view_pager);
+        progressBar = findViewById(R.id.progressBar1);
 
-        questionList=new ArrayList<>();
-        quest=findViewById(R.id.question);
-        op1=findViewById(R.id.op1);
-        op2=findViewById(R.id.op2);
-        op3=findViewById(R.id.op3);
-        op4=findViewById(R.id.op4);
-        ans=findViewById(R.id.answer);
-        hint=findViewById(R.id.hint);
-        sol=findViewById(R.id.solution);
+        questionList = new ArrayList<>();
 
         databaseReference = FirebaseDatabase.getInstance().getReference("questions").child(topic_name).child(level_name);
     }
@@ -51,24 +52,19 @@ public class QuestionListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        progressBar.setVisibility(View.VISIBLE);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.GONE);
                 for (DataSnapshot questionKey : dataSnapshot.getChildren()) {
                     Question currentqQuestion = questionKey.getValue(Question.class);
                     questionList.add(currentqQuestion);
                     logger.info(questionKey + "qwertyuu");
                 }
 
-                quest.setText(questionList.get(0).getQuestion());
-                op1.setText(questionList.get(0).getOptionA());
-                op2.setText(questionList.get(0).getOptionB());
-                op3.setText(questionList.get(0).getOptionC());
-                op4.setText(questionList.get(0).getOptionD());
-                hint.setText(questionList.get(0).getHint());
-                sol.setText(questionList.get(0).getSolution());
-                ans.setText(questionList.get(0).getAnswer());
+                pagerAdapter = new ScreenAdapter(getSupportFragmentManager(), questionList);
+                viewPager.setAdapter(pagerAdapter);
             }
 
             @Override
@@ -77,5 +73,24 @@ public class QuestionListActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private class ScreenAdapter extends FragmentStatePagerAdapter {
+        private List<Question> questionList = new ArrayList<>();
+
+        ScreenAdapter(FragmentManager fm, List<Question> questionList) {
+            super(fm);
+            this.questionList = questionList;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return QuestionListFragment.newInstance(questionList.get(position));
+        }
+
+        @Override
+        public int getCount() {
+            return questionList.size();
+        }
     }
 }
