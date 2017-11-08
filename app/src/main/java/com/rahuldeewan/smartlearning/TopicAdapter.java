@@ -7,7 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +39,11 @@ public class TopicAdapter extends ArrayAdapter<Topic> {
             listViewItem = LayoutInflater.from(context).inflate(R.layout.topic_list_item, parent, false);
         }
         Topic currentTopic = topicsList.get(position);
+        ImageView ivTopicImage=listViewItem.findViewById(R.id.iv_topic_image);
         TextView tvTopicName = listViewItem.findViewById(R.id.tv_topic_name);
+        TextView tvNoOfQuestions=listViewItem.findViewById(R.id.tv_no_of_questions);
+        Picasso.with(getContext()).load(currentTopic.getLink()).resize(100,100).into(ivTopicImage);
         tvTopicName.setText(currentTopic.getName());
-
         return listViewItem;
     }
 }

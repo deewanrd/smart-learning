@@ -40,6 +40,21 @@ public class LevelListActivity extends AppCompatActivity {
         levelList = new ArrayList<>();
         levelListView = findViewById(R.id.listview_level);
 
+        DatabaseReference db=FirebaseDatabase.getInstance().getReference("questions").child(topicName).child("Easy");
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int l= (int) dataSnapshot.getChildrenCount();
+                logger.info(l+"COUNT");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         levelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -75,5 +90,7 @@ public class LevelListActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 }
