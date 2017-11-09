@@ -36,7 +36,7 @@ public class QuestionListFragment extends Fragment {
     public static QuestionListFragment newInstance(int position,Question question) {
         QuestionListFragment fragment = new QuestionListFragment();
         Bundle args = new Bundle();
-        args.putString(QUESTION_NO, String.valueOf(position));
+        args.putString(QUESTION_NO, "Question "+String.valueOf(position));
         args.putString(QUESTION, question.getQuestion());
         args.putString(OPTIONA, question.getOptionA());
         args.putString(OPTIONB, question.getOptionB());
@@ -69,9 +69,9 @@ public class QuestionListFragment extends Fragment {
         tvOptionB.setText(getArguments().getString(OPTIONB));
         tvOptionC.setText(getArguments().getString(OPTIONC));
         tvOptionD.setText(getArguments().getString(OPTIOND));
-        tvHint.setText(getArguments().getString(HINT));
-        tvSolution.setText(getArguments().getString(SOLUTION));
-        tvAnswer.setText(getArguments().getString(ANSWER));
+//        tvHint.setText(getArguments().getString(HINT));
+//        tvSolution.setText(getArguments().getString(SOLUTION));
+//        tvAnswer.setText(getArguments().getString(ANSWER));
         return rootView;
     }
 
