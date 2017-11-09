@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.logging.Logger;
@@ -26,10 +27,10 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private TextView tvOptionB;
     private TextView tvOptionC;
     private TextView tvOptionD;
-    private TextView tvHint;
-    private TextView tvSolution;
     private TextView tvAnswer;
     private CustomDialog customDialog;
+    private ImageView tvhint;
+    private ImageView tvSolution;
     private Logger logger = Logger.getLogger("QuestionListFragment");
 
     public QuestionListFragment() {
@@ -62,14 +63,15 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         tvOptionC = rootView.findViewById(R.id.tv_option_c);
         tvOptionD = rootView.findViewById(R.id.tv_option_d);
         tvAnswer = rootView.findViewById(R.id.tv_answer);
-        tvHint = rootView.findViewById(R.id.tv_hint);
+        tvhint = rootView.findViewById(R.id.tv_hint);
         tvSolution = rootView.findViewById(R.id.tv_solution);
+
 
         tvOptionA.setOnClickListener(this);
         tvOptionB.setOnClickListener(this);
         tvOptionC.setOnClickListener(this);
         tvOptionD.setOnClickListener(this);
-        tvHint.setOnClickListener(this);
+        tvhint.setOnClickListener(this);
         tvSolution.setOnClickListener(this);
         tvAnswer.setOnClickListener(this);
 
@@ -98,7 +100,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.tv_option_a) {
-            getArguments().getString(ANSWER)
+            getArguments().getString(ANSWER);
         }
         if (view.getId() == R.id.tv_hint) {
             customDialog = new CustomDialog(getActivity(), "Hint", getArguments().getString(HINT));
