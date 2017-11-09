@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.logging.Logger;
@@ -31,6 +32,13 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private TextView tvAnswer;
     private CustomDialog customDialog;
     private Logger logger = Logger.getLogger("QuestionListFragment");
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+//    private OnFragmentInteractionListener mListener;
+  
 
     public QuestionListFragment() {
     }
@@ -72,6 +80,19 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         tvHint.setOnClickListener(this);
         tvSolution.setOnClickListener(this);
         tvAnswer.setOnClickListener(this);
+
+     /*   b1 = rootView.findViewById(R.id.test);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = 4;
+                logger.info(QuestionListActivity.questionList.get(4).getQuestion());
+                QuestionListFragment q1 = new QuestionListFragment();
+                q1.newInstance((position+1),QuestionListActivity.questionList.get(position));
+                logger.info("after");
+            }
+        });*/
 
         tvQuestionNo.setText(getArguments().getString(QUESTION_NO));
         tvQuestion.setText(getArguments().getString(QUESTION));
