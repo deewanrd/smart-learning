@@ -8,8 +8,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.SparseArray;
 import android.view.View;
-import android.widget.ProgressBar;
+import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +33,8 @@ public class QuestionListActivity extends AppCompatActivity {
     Logger logger;
     GeometricProgressView geometricProgressView;
 
+    Button b1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +51,9 @@ public class QuestionListActivity extends AppCompatActivity {
 
         questionList = new ArrayList<>();
 
+
         databaseReference = FirebaseDatabase.getInstance().getReference("questions").child(topic_name).child(level_name);
+
     }
 
     @Override
@@ -67,6 +72,7 @@ public class QuestionListActivity extends AppCompatActivity {
 
                 pagerAdapter = new ScreenAdapter(getSupportFragmentManager(), questionList);
                 viewPager.setAdapter(pagerAdapter);
+
             }
 
             @Override
@@ -79,7 +85,7 @@ public class QuestionListActivity extends AppCompatActivity {
 
     private class ScreenAdapter extends FragmentStatePagerAdapter {
         private List<Question> questionList = new ArrayList<>();
-
+        SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
         ScreenAdapter(FragmentManager fm, List<Question> questionList) {
             super(fm);
             this.questionList = questionList;
@@ -87,6 +93,7 @@ public class QuestionListActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+
             return QuestionListFragment.newInstance((position+1),questionList.get(position));
         }
 
@@ -94,5 +101,20 @@ public class QuestionListActivity extends AppCompatActivity {
         public int getCount() {
             return questionList.size();
         }
+
+       /* @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Fragment fragment = (Fragment) super.instantiateItem(container, position);
+            registeredFragments.put(position, fragment);
+            return fragment;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            registeredFragments.remove(position);
+            super.destroyItem(container, position, object);
+        }
+        */
+
     }
 }

@@ -78,7 +78,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@android:color/black">
+            android:background="@android:color/black"
+            android:id="@+id/toolbar2">
+
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -111,7 +114,19 @@
                     android:text="@string/ans"
                     android:padding="5dp"
                     android:textColor="@android:color/white" />
+
+
             </LinearLayout>
         </android.support.v7.widget.Toolbar>
+
+       <!-- <Button
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/toolbar2"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="60dp"
+            android:layout_marginStart="96dp"
+            android:text="Button" /> -->
     </RelativeLayout>
 </LinearLayout>
