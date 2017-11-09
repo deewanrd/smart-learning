@@ -65,6 +65,10 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         tvHint = rootView.findViewById(R.id.tv_hint);
         tvSolution = rootView.findViewById(R.id.tv_solution);
 
+        tvOptionA.setOnClickListener(this);
+        tvOptionB.setOnClickListener(this);
+        tvOptionC.setOnClickListener(this);
+        tvOptionD.setOnClickListener(this);
         tvHint.setOnClickListener(this);
         tvSolution.setOnClickListener(this);
         tvAnswer.setOnClickListener(this);
@@ -80,6 +84,9 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
+        if(view.getId()==R.id.tv_option_a){
+            getArguments().getString(ANSWER)
+        }
         if (view.getId() == R.id.tv_hint) {
             customDialog = new CustomDialog(getActivity(), "Hint", getArguments().getString(HINT));
             customDialog.show();
