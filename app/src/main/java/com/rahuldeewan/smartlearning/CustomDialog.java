@@ -1,0 +1,31 @@
+package com.rahuldeewan.smartlearning;
+
+import android.app.Activity;
+import android.app.Dialog;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.widget.TextView;
+
+public class CustomDialog extends Dialog {
+
+    private Activity activity;
+    private String title;
+    private String message;
+
+    CustomDialog(@NonNull Activity activity, String title, String message) {
+        super(activity);
+        this.activity = activity;
+        this.title = title;
+        this.message = message;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_custom_dialog);
+        TextView textViewDialogTitle=findViewById(R.id.tv_dialog_title);
+        TextView textViewDialogMessage=findViewById(R.id.tv_dialog_message);
+        textViewDialogTitle.setText(title);
+        textViewDialogMessage.setText(message);
+    }
+}
