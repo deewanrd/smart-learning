@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.logging.Logger;
@@ -32,13 +31,6 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private TextView tvAnswer;
     private CustomDialog customDialog;
     private Logger logger = Logger.getLogger("QuestionListFragment");
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-//    private OnFragmentInteractionListener mListener;
-  
 
     public QuestionListFragment() {
     }
@@ -105,7 +97,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.tv_option_a){
+        if (view.getId() == R.id.tv_option_a) {
             getArguments().getString(ANSWER)
         }
         if (view.getId() == R.id.tv_hint) {
