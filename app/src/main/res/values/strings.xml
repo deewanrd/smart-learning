@@ -7,6 +7,6 @@
     <string name="opD">It is not necessary to do algorithm analysis</string>
     <string name="hint">Hint</string>
     <string name="sol">Solution</string>
-    <string name="ans">Answwer</string>
+    <string name="ans">Answer</string>
     <string name="question_no">Question</string>
 </resources>

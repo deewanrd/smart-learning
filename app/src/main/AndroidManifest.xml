@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".LevelListActivity" />
-        <activity android:name=".QuestionListActivity"></activity>
+        <activity android:name=".QuestionListActivity" />
+        <activity android:name=".CustomDialog"></activity>
     </application>
 
 </manifest>
