@@ -16,18 +16,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/iv_topic_image"
-        android:textStyle="bold"
         android:padding="10dp"
+        android:textStyle="bold"
         tools:ignore="RelativeOverlap" />
 
     <ImageView
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:src="@mipmap/ic_launcher_foreground"
-
-        android:scaleType="fitCenter"
         android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_launcher_foreground"
         tools:ignore="ContentDescription" />
 
     <TextView

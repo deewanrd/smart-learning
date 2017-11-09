@@ -73,7 +73,7 @@ public class QuestionListActivity extends AppCompatActivity {
 
                 pagerAdapter = new ScreenAdapter(getSupportFragmentManager(), questionList);
                 viewPager.setAdapter(pagerAdapter);
-
+                viewPager.setOffscreenPageLimit(questionList.size());
             }
 
             @Override

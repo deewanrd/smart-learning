@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/SmartLearning.iml" filepath="$PROJECT_DIR$/SmartLearning.iml" />
       <module fileurl="file://C:\Users\Mridul\Documents\GitHub\smart-learning\SmartLearning.iml" filepath="C:\Users\Mridul\Documents\GitHub\smart-learning\SmartLearning.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/smart-learning.iml" filepath="$PROJECT_DIR$/smart-learning.iml" />
+      <module fileurl="file://F:\SmartLearning\smart-learning.iml" filepath="F:\SmartLearning\smart-learning.iml" />
     </modules>
   </component>
 </project>

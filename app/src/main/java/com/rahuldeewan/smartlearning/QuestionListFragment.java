@@ -1,5 +1,6 @@
 package com.rahuldeewan.smartlearning;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private CustomDialog customDialog;
     private ImageView tvhint;
     private ImageView tvSolution;
+    private ImageView imageViewSubmit;
     private Logger logger = Logger.getLogger("QuestionListFragment");
 
     public QuestionListFragment() {
@@ -65,6 +67,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         tvAnswer = rootView.findViewById(R.id.tv_answer);
         tvhint = rootView.findViewById(R.id.tv_hint);
         tvSolution = rootView.findViewById(R.id.tv_solution);
+        imageViewSubmit = rootView.findViewById(R.id.iv_submit_icon);
 
 
         tvOptionA.setOnClickListener(this);
@@ -74,19 +77,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         tvhint.setOnClickListener(this);
         tvSolution.setOnClickListener(this);
         tvAnswer.setOnClickListener(this);
-
-     /*   b1 = rootView.findViewById(R.id.test);
-
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = 4;
-                logger.info(QuestionListActivity.questionList.get(4).getQuestion());
-                QuestionListFragment q1 = new QuestionListFragment();
-                q1.newInstance((position+1),QuestionListActivity.questionList.get(position));
-                logger.info("after");
-            }
-        });*/
+        imageViewSubmit.setOnClickListener(this);
 
         tvQuestionNo.setText(getArguments().getString(QUESTION_NO));
         tvQuestion.setText(getArguments().getString(QUESTION));
@@ -100,18 +91,40 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.tv_option_a) {
-            getArguments().getString(ANSWER);
+            logger.info(getArguments().getString(ANSWER) + "ANSWER");
+            if (getArguments().getString(ANSWER).equalsIgnoreCase("A")) {
+                tvOptionA.setBackgroundColor(Color.GREEN);
+            }
+        }
+        if (view.getId() == R.id.tv_option_b) {
+            if (getArguments().getString(ANSWER).equalsIgnoreCase("B")) {
+                tvOptionB.setBackgroundColor(Color.GREEN);
+            }
+        }
+        if (view.getId() == R.id.tv_option_c) {
+            if (getArguments().getString(ANSWER).equalsIgnoreCase("C")) {
+                tvOptionC.setBackgroundColor(Color.GREEN);
+            }
+        }
+        if (view.getId() == R.id.tv_option_d) {
+            if (getArguments().getString(ANSWER).equalsIgnoreCase("D")) {
+                tvOptionD.setBackgroundColor(Color.GREEN);
+            }
         }
         if (view.getId() == R.id.tv_hint) {
-            customDialog = new CustomDialog(getActivity(), "Hint", getArguments().getString(HINT));
+            customDialog = new CustomDialog(getActivity(), "Hint", getArguments().getString(HINT), "GOT IT!");
             customDialog.show();
         }
         if (view.getId() == R.id.tv_solution) {
-            customDialog = new CustomDialog(getActivity(), "Solution", getArguments().getString(SOLUTION));
+            customDialog = new CustomDialog(getActivity(), "Solution", getArguments().getString(SOLUTION), "GOT IT!");
             customDialog.show();
         }
         if (view.getId() == R.id.tv_answer) {
-            customDialog = new CustomDialog(getActivity(), "Answer", getArguments().getString(ANSWER));
+            customDialog = new CustomDialog(getActivity(), "Answer", getArguments().getString(ANSWER), "GOT IT!");
+            customDialog.show();
+        }
+        if (view.getId() == R.id.iv_submit_icon) {
+            customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit?", "YES");
             customDialog.show();
         }
 

@@ -11,12 +11,14 @@ public class CustomDialog extends Dialog {
     private Activity activity;
     private String title;
     private String message;
+    private String subMessage;
 
-    CustomDialog(@NonNull Activity activity, String title, String message) {
+    CustomDialog(@NonNull Activity activity, String title, String message,String subMessage) {
         super(activity);
         this.activity = activity;
         this.title = title;
         this.message = message;
+        this.subMessage=subMessage;
     }
 
     @Override
