@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import net.bohush.geometricprogressview.GeometricProgressView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -28,7 +30,7 @@ public class QuestionListActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     Logger logger;
-    ProgressBar progressBar;
+    GeometricProgressView geometricProgressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class QuestionListActivity extends AppCompatActivity {
         String topic_name = i.getStringExtra("Topic_name");
         logger.info(level_name);
         viewPager = findViewById(R.id.view_pager);
-        progressBar = findViewById(R.id.progressBar1);
+        geometricProgressView=findViewById(R.id.geometric_progress_view);
 
         questionList = new ArrayList<>();
 
@@ -52,11 +54,11 @@ public class QuestionListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        progressBar.setVisibility(View.VISIBLE);
+        geometricProgressView.setVisibility(View.VISIBLE);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                progressBar.setVisibility(View.GONE);
+                geometricProgressView.setVisibility(View.GONE);
                 for (DataSnapshot questionKey : dataSnapshot.getChildren()) {
                     Question currentqQuestion = questionKey.getValue(Question.class);
                     questionList.add(currentqQuestion);
@@ -85,7 +87,7 @@ public class QuestionListActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return QuestionListFragment.newInstance(questionList.get(position));
+            return QuestionListFragment.newInstance((position+1),questionList.get(position));
         }
 
         @Override

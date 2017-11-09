@@ -13,6 +13,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import net.bohush.geometricprogressview.GeometricProgressView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private List<Topic> topicsList;
     private ListView topicListView;
+    GeometricProgressView geometricProgressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("topics");
         topicsList = new ArrayList<>();
         topicListView = findViewById(R.id.listview_topic);
+        geometricProgressView=findViewById(R.id.geometric_progress_view);
 
         topicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -48,10 +52,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        geometricProgressView.setVisibility(View.VISIBLE);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                geometricProgressView.setVisibility(View.GONE);
                 topicsList.clear();
                 for (DataSnapshot topicKey : dataSnapshot.getChildren()) {
                     Topic currentTopic = topicKey.getValue(Topic.class);

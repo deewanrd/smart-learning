@@ -5,16 +5,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.logging.Logger;
 
 public class QuestionListFragment extends Fragment {
+    private static final String QUESTION_NO = "id";
     private static final String QUESTION = "question";
-    private static final String OPTION1 = "option1";
-    private static final String OPTION2 = "option2";
-    private static final String OPTION3 = "option3";
-    private static final String OPTION4 = "option4";
+    private static final String OPTIONA = "optionA";
+    private static final String OPTIONB = "optionB";
+    private static final String OPTIONC = "optionC";
+    private static final String OPTIOND = "optionD";
     private static final String HINT = "hint";
     private static final String SOLUTION = "solution";
     private static final String ANSWER = "answer";
@@ -30,14 +33,15 @@ public class QuestionListFragment extends Fragment {
     public QuestionListFragment() {
     }
 
-    public static QuestionListFragment newInstance(Question question) {
+    public static QuestionListFragment newInstance(int position,Question question) {
         QuestionListFragment fragment = new QuestionListFragment();
         Bundle args = new Bundle();
+        args.putString(QUESTION_NO, String.valueOf(position));
         args.putString(QUESTION, question.getQuestion());
-        args.putString(OPTION1, question.getOptionA());
-        args.putString(OPTION2, question.getOptionB());
-        args.putString(OPTION3, question.getOptionC());
-        args.putString(OPTION4, question.getOptionD());
+        args.putString(OPTIONA, question.getOptionA());
+        args.putString(OPTIONB, question.getOptionB());
+        args.putString(OPTIONC, question.getOptionC());
+        args.putString(OPTIOND, question.getOptionD());
         args.putString(HINT, question.getHint());
         args.putString(SOLUTION, question.getSolution());
         args.putString(ANSWER, question.getAnswer());
@@ -45,37 +49,29 @@ public class QuestionListFragment extends Fragment {
         return fragment;
     }
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_question_list, container, false);
-        TextView ques = rootView.findViewById(R.id.question);
-        TextView op1 = rootView.findViewById(R.id.op1);
-        TextView op2 = rootView.findViewById(R.id.op2);
-        TextView op3 = rootView.findViewById(R.id.op3);
-        TextView op4 = rootView.findViewById(R.id.op4);
-        TextView ans = rootView.findViewById(R.id.answer);
-        TextView hint = rootView.findViewById(R.id.hint);
-        TextView sol = rootView.findViewById(R.id.solution);
+        TextView tvQuestionNo = rootView.findViewById(R.id.tv_question_no);
+        TextView tvQuestion = rootView.findViewById(R.id.tv_question);
+        TextView tvOptionA = rootView.findViewById(R.id.tv_option_a);
+        TextView tvOptionB = rootView.findViewById(R.id.tv_option_b);
+        TextView tvOptionC = rootView.findViewById(R.id.tv_option_c);
+        TextView tvOptionD = rootView.findViewById(R.id.tv_option_d);
+        TextView tvAnswer = rootView.findViewById(R.id.tv_answer);
+        TextView tvHint = rootView.findViewById(R.id.tv_hint);
+        TextView tvSolution = rootView.findViewById(R.id.tv_solution);
 
-
-        ques.setText(getArguments().getString(QUESTION));
-        op1.setText(getArguments().getString(OPTION1));
-        op2.setText(getArguments().getString(OPTION2));
-        op3.setText(getArguments().getString(OPTION3));
-        op4.setText(getArguments().getString(OPTION4));
-        hint.setText(getArguments().getString(HINT));
-        sol.setText(getArguments().getString(SOLUTION));
-        ans.setText(getArguments().getString(ANSWER));
+        tvQuestionNo.setText(getArguments().getString(QUESTION_NO));
+        tvQuestion.setText(getArguments().getString(QUESTION));
+        tvOptionA.setText(getArguments().getString(OPTIONA));
+        tvOptionB.setText(getArguments().getString(OPTIONB));
+        tvOptionC.setText(getArguments().getString(OPTIONC));
+        tvOptionD.setText(getArguments().getString(OPTIOND));
+        tvHint.setText(getArguments().getString(HINT));
+        tvSolution.setText(getArguments().getString(SOLUTION));
+        tvAnswer.setText(getArguments().getString(ANSWER));
         return rootView;
     }
 

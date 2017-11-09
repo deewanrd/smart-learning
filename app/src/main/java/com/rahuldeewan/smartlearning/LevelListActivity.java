@@ -13,6 +13,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import net.bohush.geometricprogressview.GeometricProgressView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -24,6 +26,7 @@ public class LevelListActivity extends AppCompatActivity {
     private LevelAdapter levelAdapter;
     private ListView levelListView;
     private Logger logger;
+    GeometricProgressView geometricProgressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,30 +42,16 @@ public class LevelListActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("levels");
         levelList = new ArrayList<>();
         levelListView = findViewById(R.id.listview_level);
-
-        DatabaseReference db=FirebaseDatabase.getInstance().getReference("questions").child(topicName).child("Easy");
-        db.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                int l= (int) dataSnapshot.getChildrenCount();
-                logger.info(l+"COUNT");
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
+        geometricProgressView = findViewById(R.id.geometric_progress_view);
 
         levelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Level level=levelList.get(i);
-                Intent in=new Intent(LevelListActivity.this,QuestionListActivity.class);
-                in.putExtra("Level_Id",level.getID());
-                in.putExtra("Level_name",level.getName());
-                in.putExtra("Topic_name",topicName);
+                Level level = levelList.get(i);
+                Intent in = new Intent(LevelListActivity.this, QuestionListActivity.class);
+                in.putExtra("Level_Id", level.getID());
+                in.putExtra("Level_name", level.getName());
+                in.putExtra("Topic_name", topicName);
                 startActivity(in);
             }
         });
@@ -71,14 +60,16 @@ public class LevelListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        geometricProgressView.setVisibility(View.VISIBLE);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                geometricProgressView.setVisibility(View.GONE);
                 levelList.clear();
                 logger.info(dataSnapshot + "12345678");
                 for (DataSnapshot levelKey : dataSnapshot.getChildren()) {
                     Level currentLevel = levelKey.getValue(Level.class);
+                    logger.info(currentLevel.getID() + "LevelId");
                     levelList.add(currentLevel);
                 }
                 levelAdapter = new LevelAdapter(LevelListActivity.this, levelList);

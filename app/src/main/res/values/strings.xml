@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Smart Learning</string>
+    <string name="question">Why we need to do algorithm analysis?</string>
+    <string name="opA">We analyze available algorithms to find and implement the best suitable algorithm.</string>
+    <string name="opB">For the sake of finding time complexities</string>
+    <string name="opC">For building knowledge about the given algorithms</string>
+    <string name="opD">It is not necessary to do algorithm analysis</string>
+    <string name="hint">There may be various solutions for a given problem</string>
+    <string name="sol">Many solution algorithms can be derived for a given problem. We analyze available algorithms to find and implement the best suitable algorithm.</string>
+    <string name="ans">A</string>
 </resources>
