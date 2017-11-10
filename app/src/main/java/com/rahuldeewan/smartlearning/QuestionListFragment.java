@@ -112,7 +112,10 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
             }
         }
         if (view.getId() == R.id.tv_hint) {
-            customDialog = new CustomDialog(getActivity(), "Hint", getArguments().getString(HINT), "GOT IT!");
+            if(getArguments().getString(HINT).equalsIgnoreCase(""))
+                customDialog=new CustomDialog(getActivity(),"Hint","Basic","GOT IT!");
+            else
+                customDialog = new CustomDialog(getActivity(), "Hint", getArguments().getString(HINT), "GOT IT!");
             customDialog.show();
         }
         if (view.getId() == R.id.tv_solution) {
