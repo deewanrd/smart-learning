@@ -8,10 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.SparseArray;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,9 +29,12 @@ public class QuestionListActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     Logger logger;
+    static int count = 0;
     GeometricProgressView geometricProgressView;
 
-    Button b1;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +51,8 @@ public class QuestionListActivity extends AppCompatActivity {
         geometricProgressView=findViewById(R.id.geometric_progress_view);
 
         questionList = new ArrayList<>();
-
-
         databaseReference = FirebaseDatabase.getInstance().getReference("questions").child(topic_name).child(level_name);
+
 
     }
 
@@ -64,6 +63,7 @@ public class QuestionListActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                count=0;
                 geometricProgressView.setVisibility(View.GONE);
                 for (DataSnapshot questionKey : dataSnapshot.getChildren()) {
                     Question currentqQuestion = questionKey.getValue(Question.class);
@@ -86,7 +86,7 @@ public class QuestionListActivity extends AppCompatActivity {
 
     private class ScreenAdapter extends FragmentStatePagerAdapter {
         private List<Question> questionList = new ArrayList<>();
-        SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
+
         ScreenAdapter(FragmentManager fm, List<Question> questionList) {
             super(fm);
             this.questionList = questionList;

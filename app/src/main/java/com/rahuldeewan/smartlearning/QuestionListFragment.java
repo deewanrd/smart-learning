@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import java.util.logging.Logger;
 
+import static com.rahuldeewan.smartlearning.QuestionListActivity.count;
+
 public class QuestionListFragment extends Fragment implements View.OnClickListener {
     private static final String QUESTION_NO = "id";
     private static final String QUESTION = "question";
@@ -22,6 +24,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private static final String SOLUTION = "solution";
     private static final String ANSWER = "answer";
 
+    private static int i = 0;
     private TextView tvQuestionNo;
     private TextView tvQuestion;
     private TextView tvOptionA;
@@ -34,6 +37,8 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private ImageView tvSolution;
     private ImageView imageViewSubmit;
     private Logger logger = Logger.getLogger("QuestionListFragment");
+   //array to keep check visit to question
+     boolean []arr = new boolean[15];
 
     public QuestionListFragment() {
     }
@@ -41,6 +46,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     public static QuestionListFragment newInstance(int position, Question question) {
         QuestionListFragment fragment = new QuestionListFragment();
         Bundle args = new Bundle();
+        i = position-1;
         args.putString(QUESTION_NO, "Question " + String.valueOf(position));
         args.putString(QUESTION, question.getQuestion());
         args.putString(OPTIONA, question.getOptionA());
@@ -92,23 +98,81 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         if (view.getId() == R.id.tv_option_a) {
             logger.info(getArguments().getString(ANSWER) + "ANSWER");
+            //arr[Integer.parseInt(QUESTION_NO)]=true;
             if (getArguments().getString(ANSWER).equalsIgnoreCase("A")) {
                 tvOptionA.setBackgroundColor(Color.GREEN);
+                if(arr[i]==false)
+                {
+                    count++;
+                }
+                logger.info(count + "count");
+                arr[i]=true;
+            }else{
+                tvOptionA.setBackgroundColor(Color.RED);
+                if(arr[i]==false)
+                {
+                    count--;
+                }
+                logger.info(count + "count");
+                arr[i]=true;
             }
         }
         if (view.getId() == R.id.tv_option_b) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("B")) {
                 tvOptionB.setBackgroundColor(Color.GREEN);
+                if(arr[i]==false)
+                {
+                    count++;
+                }
+                logger.info(count + "count");
+                arr[i]=true;
+            }else{
+                tvOptionB.setBackgroundColor(Color.RED);
+                if(arr[i]==false)
+                {
+                    count--;
+                }
+                logger.info(count + "count");
+                arr[i]=true;
             }
         }
         if (view.getId() == R.id.tv_option_c) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("C")) {
                 tvOptionC.setBackgroundColor(Color.GREEN);
+                if(arr[i]==false)
+                {
+                    count++;
+                }
+                logger.info(count + "count");
+                arr[i]=true;
+            }else{
+                tvOptionC.setBackgroundColor(Color.RED);
+                if(arr[i]==false)
+                {
+                    count--;
+                }
+                logger.info(count + "count");
+                arr[i]=true;
             }
         }
         if (view.getId() == R.id.tv_option_d) {
+
             if (getArguments().getString(ANSWER).equalsIgnoreCase("D")) {
                 tvOptionD.setBackgroundColor(Color.GREEN);
+                if(arr[i]==false)
+                {
+                    count++;
+                }
+                logger.info(count + "count");
+                arr[i]=true;
+            }else{
+                tvOptionD.setBackgroundColor(Color.RED);
+                if(arr[i]==false)
+                {
+                    count--;
+                }
+                logger.info(count + "count");
+                arr[i]=true;
             }
         }
         if (view.getId() == R.id.tv_hint) {
