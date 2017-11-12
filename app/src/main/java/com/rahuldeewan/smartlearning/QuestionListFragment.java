@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import java.util.logging.Logger;
 
+import static com.rahuldeewan.smartlearning.QuestionListActivity.count;
+
 public class QuestionListFragment extends Fragment implements View.OnClickListener {
     private static final String QUESTION_NO = "id";
     private static final String QUESTION = "question";
@@ -22,6 +24,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private static final String SOLUTION = "solution";
     private static final String ANSWER = "answer";
 
+    private static int i = 0;
     private TextView tvQuestionNo;
     private TextView tvQuestion;
     private TextView tvOptionA;
@@ -34,6 +37,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private ImageView tvSolution;
     private ImageView imageViewSubmit;
     private Logger logger = Logger.getLogger("QuestionListFragment");
+    boolean[] arr = new boolean[15];
 
     public QuestionListFragment() {
     }
@@ -41,6 +45,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     public static QuestionListFragment newInstance(int position, Question question) {
         QuestionListFragment fragment = new QuestionListFragment();
         Bundle args = new Bundle();
+        i = position - 1;
         args.putString(QUESTION_NO, "Question " + String.valueOf(position));
         args.putString(QUESTION, question.getQuestion());
         args.putString(OPTIONA, question.getOptionA());
@@ -95,24 +100,73 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
             if (getArguments().getString(ANSWER).equalsIgnoreCase("A")) {
                 QuestionListActivity.count++;
                 tvOptionA.setBackgroundColor(Color.GREEN);
+                if (!arr[i]) {
+                    count++;
+                }
+                logger.info(count + "count");
+                arr[i] = true;
+            } else {
+                tvOptionA.setBackgroundColor(Color.RED);
+                if (!arr[i]) {
+                    count--;
+                }
+                logger.info(count + "count");
+                arr[i] = true;
             }
         }
         if (view.getId() == R.id.tv_option_b) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("B")) {
                 QuestionListActivity.count++;
                 tvOptionB.setBackgroundColor(Color.GREEN);
+                if (!arr[i]) {
+                    count++;
+                }
+                logger.info(count + "count");
+                arr[i] = true;
+            } else {
+                tvOptionB.setBackgroundColor(Color.RED);
+                if (!arr[i]) {
+                    count--;
+                }
+                logger.info(count + "count");
+                arr[i] = true;
             }
         }
         if (view.getId() == R.id.tv_option_c) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("C")) {
                 QuestionListActivity.count++;
                 tvOptionC.setBackgroundColor(Color.GREEN);
+                if (!arr[i]) {
+                    count++;
+                }
+                logger.info(count + "count");
+                arr[i] = true;
+            } else {
+                tvOptionC.setBackgroundColor(Color.RED);
+                if (!arr[i]) {
+                    count--;
+                }
+                logger.info(count + "count");
+                arr[i] = true;
             }
         }
         if (view.getId() == R.id.tv_option_d) {
+
             if (getArguments().getString(ANSWER).equalsIgnoreCase("D")) {
                 QuestionListActivity.count++;
                 tvOptionD.setBackgroundColor(Color.GREEN);
+                if (!arr[i]) {
+                    count++;
+                }
+                logger.info(count + "count");
+                arr[i] = true;
+            } else {
+                tvOptionD.setBackgroundColor(Color.RED);
+                if (!arr[i]) {
+                    count--;
+                }
+                logger.info(count + "count");
+                arr[i] = true;
             }
         }
         if (view.getId() == R.id.tv_hint) {
@@ -133,8 +187,6 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         if (view.getId() == R.id.iv_submit_icon) {
             customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit?", "YES");
             customDialog.show();
-            logger.info(QuestionListActivity.count+"COUnT");
         }
-
     }
 }
