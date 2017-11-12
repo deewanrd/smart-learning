@@ -93,27 +93,31 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         if (view.getId() == R.id.tv_option_a) {
             logger.info(getArguments().getString(ANSWER) + "ANSWER");
             if (getArguments().getString(ANSWER).equalsIgnoreCase("A")) {
+                QuestionListActivity.count++;
                 tvOptionA.setBackgroundColor(Color.GREEN);
             }
         }
         if (view.getId() == R.id.tv_option_b) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("B")) {
+                QuestionListActivity.count++;
                 tvOptionB.setBackgroundColor(Color.GREEN);
             }
         }
         if (view.getId() == R.id.tv_option_c) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("C")) {
+                QuestionListActivity.count++;
                 tvOptionC.setBackgroundColor(Color.GREEN);
             }
         }
         if (view.getId() == R.id.tv_option_d) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("D")) {
+                QuestionListActivity.count++;
                 tvOptionD.setBackgroundColor(Color.GREEN);
             }
         }
         if (view.getId() == R.id.tv_hint) {
-            if(getArguments().getString(HINT).equalsIgnoreCase(""))
-                customDialog=new CustomDialog(getActivity(),"Hint","Basic","GOT IT!");
+            if (getArguments().getString(HINT).equalsIgnoreCase(""))
+                customDialog = new CustomDialog(getActivity(), "Hint", "Basic", "GOT IT!");
             else
                 customDialog = new CustomDialog(getActivity(), "Hint", getArguments().getString(HINT), "GOT IT!");
             customDialog.show();
@@ -129,6 +133,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         if (view.getId() == R.id.iv_submit_icon) {
             customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit?", "YES");
             customDialog.show();
+            logger.info(QuestionListActivity.count+"COUnT");
         }
 
     }

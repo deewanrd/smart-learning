@@ -34,6 +34,8 @@ public class QuestionListActivity extends AppCompatActivity {
     Logger logger;
     GeometricProgressView geometricProgressView;
 
+    static int count=0;
+
     Button b1;
 
     @Override
