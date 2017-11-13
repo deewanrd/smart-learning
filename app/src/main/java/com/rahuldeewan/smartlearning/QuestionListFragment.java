@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.logging.Logger;
 
 import static com.rahuldeewan.smartlearning.QuestionListActivity.count;
+import static com.rahuldeewan.smartlearning.QuestionListActivity.size;
 
 public class QuestionListFragment extends Fragment implements View.OnClickListener {
     private static final String QUESTION_NO = "id";
@@ -38,7 +39,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private ImageView imageViewSubmit;
     private Logger logger = Logger.getLogger("QuestionListFragment");
    //array to keep check visit to question
-     boolean []arr = new boolean[15];
+     boolean []arr = new boolean[size];
 
     public QuestionListFragment() {
     }
@@ -191,7 +192,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
             customDialog.show();
         }
         if (view.getId() == R.id.iv_submit_icon) {
-            customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit?", "YES");
+            customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit? your score is : "+ count, "YES");
             customDialog.show();
         }
 

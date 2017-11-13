@@ -30,6 +30,7 @@ public class QuestionListActivity extends AppCompatActivity {
     private PagerAdapter pagerAdapter;
     Logger logger;
     static int count = 0;
+    static int size =0;
     GeometricProgressView geometricProgressView;
 
 
@@ -64,12 +65,15 @@ public class QuestionListActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 count=0;
+                int s=0;
                 geometricProgressView.setVisibility(View.GONE);
                 for (DataSnapshot questionKey : dataSnapshot.getChildren()) {
                     Question currentqQuestion = questionKey.getValue(Question.class);
                     questionList.add(currentqQuestion);
                     logger.info(questionKey + "qwertyuu");
+                    s++;
                 }
+                size = s;
 
                 pagerAdapter = new ScreenAdapter(getSupportFragmentManager(), questionList);
                 viewPager.setAdapter(pagerAdapter);
