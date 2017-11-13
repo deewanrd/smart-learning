@@ -33,7 +33,7 @@ public class QuestionListActivity extends AppCompatActivity {
     private PagerAdapter pagerAdapter;
     Logger logger;
     static int count = 0;
-    static int size =0;
+    static int size = 0;
     GeometricProgressView geometricProgressView;
     Spinner spinnerQuestion;
     List<String> list;
@@ -62,53 +62,54 @@ public class QuestionListActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                count=0;
-                int s=0;
+                count = 0;
+                int s = 0;
                 geometricProgressView.setVisibility(View.GONE);
                 for (DataSnapshot questionKey : dataSnapshot.getChildren()) {
-                    Question currentqQuestion = questionKey.getValue(Question.class);
-                    questionList.add(currentqQuestion);
-                size = s;
+                    Question currentQuestion = questionKey.getValue(Question.class);
+                    questionList.add(currentQuestion);
+                    size = s;
 
-                pagerAdapter = new ScreenAdapter(getSupportFragmentManager(), questionList);
-                viewPager.setAdapter(pagerAdapter);
-                list = new ArrayList<>();
-                for (int j = 1; j <= questionList.size(); j++) {
-                    list.add("Question " + j);
+                    pagerAdapter = new ScreenAdapter(getSupportFragmentManager(), questionList);
+                    viewPager.setAdapter(pagerAdapter);
+                    list = new ArrayList<>();
+                    for (int j = 1; j <= questionList.size(); j++) {
+                        list.add("Question " + j);
+                    }
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, list);
+                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerQuestion.setPrompt("Jump to Question ");
+                    spinnerQuestion.setAdapter(arrayAdapter);
+                    spinnerQuestion.setSelection(0);
+                    spinnerQuestion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            viewPager.setCurrentItem(i);
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
+                    viewPager.setOffscreenPageLimit(questionList.size());
+                    viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                        @Override
+                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                        }
+
+                        @Override
+                        public void onPageSelected(int position) {
+                            spinnerQuestion.setSelection(position);
+                        }
+
+                        @Override
+                        public void onPageScrollStateChanged(int state) {
+
+                        }
+                    });
                 }
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, list);
-                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerQuestion.setPrompt("Jump to Question ");
-                spinnerQuestion.setAdapter(arrayAdapter);
-                spinnerQuestion.setSelection(0);
-                spinnerQuestion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        viewPager.setCurrentItem(i);
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-
-                    }
-                });
-                viewPager.setOffscreenPageLimit(questionList.size());
-                viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                    @Override
-                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                    }
-
-                    @Override
-                    public void onPageSelected(int position) {
-                        spinnerQuestion.setSelection(position);
-                    }
-
-                    @Override
-                    public void onPageScrollStateChanged(int state) {
-
-                    }
-                });
             }
 
             @Override

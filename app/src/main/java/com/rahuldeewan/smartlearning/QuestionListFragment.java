@@ -26,20 +26,13 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private static final String ANSWER = "answer";
 
     private static int i = 0;
-    private TextView tvQuestionNo;
-    private TextView tvQuestion;
     private TextView tvOptionA;
     private TextView tvOptionB;
     private TextView tvOptionC;
     private TextView tvOptionD;
-    private TextView tvAnswer;
-    private CustomDialog customDialog;
-    private ImageView imageViewHint;
-    private ImageView imageViewSolution;
-    private ImageView imageViewSubmit;
     private Logger logger = Logger.getLogger("QuestionListFragment");
-   //array to keep check visit to question
-     boolean []arr = new boolean[size];
+    //array to keep check visit to question
+    boolean[] arr = new boolean[size];
 
     public QuestionListFragment() {
     }
@@ -65,16 +58,16 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_question_list, container, false);
-        tvQuestionNo = rootView.findViewById(R.id.tv_question_no);
-        tvQuestion = rootView.findViewById(R.id.tv_question);
+        TextView tvQuestionNo = rootView.findViewById(R.id.tv_question_no);
+        TextView tvQuestion = rootView.findViewById(R.id.tv_question);
         tvOptionA = rootView.findViewById(R.id.tv_option_a);
         tvOptionB = rootView.findViewById(R.id.tv_option_b);
         tvOptionC = rootView.findViewById(R.id.tv_option_c);
         tvOptionD = rootView.findViewById(R.id.tv_option_d);
 
-        imageViewHint = getActivity().findViewById(R.id.iv_hint);
-        imageViewSolution = getActivity().findViewById(R.id.iv_solution);
-        imageViewSubmit = getActivity().findViewById(R.id.iv_submit);
+        ImageView imageViewHint = getActivity().findViewById(R.id.iv_hint);
+        ImageView imageViewSolution = getActivity().findViewById(R.id.iv_solution);
+        ImageView imageViewSubmit = getActivity().findViewById(R.id.iv_submit);
 
 
         tvOptionA.setOnClickListener(this);
@@ -171,6 +164,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
                 arr[i] = true;
             }
         }
+        CustomDialog customDialog;
         if (view.getId() == R.id.iv_hint) {
             if (getArguments().getString(HINT).equalsIgnoreCase(""))
                 customDialog = new CustomDialog(getActivity(), "Hint", "Basic", "GOT IT!");
@@ -183,7 +177,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
             customDialog.show();
         }
         if (view.getId() == R.id.iv_submit) {
-            customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit? your score is : "+ count, "YES");
+            customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit? your score is : " + count, "YES");
             customDialog.show();
         }
     }
