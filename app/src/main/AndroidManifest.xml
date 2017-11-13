@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".LevelListActivity" />
         <activity android:name=".QuestionListActivity" />
-        <activity android:name=".CustomDialog"></activity>
+        <activity android:name=".CustomDialog" />
+        <activity android:name=".CustomDialogGrid"></activity>
     </application>
 
 </manifest>

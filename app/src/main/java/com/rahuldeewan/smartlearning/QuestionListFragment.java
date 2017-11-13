@@ -34,8 +34,8 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private TextView tvOptionD;
     private TextView tvAnswer;
     private CustomDialog customDialog;
-    private ImageView tvhint;
-    private ImageView tvSolution;
+    private ImageView imageViewHint;
+    private ImageView imageViewSolution;
     private ImageView imageViewSubmit;
     private Logger logger = Logger.getLogger("QuestionListFragment");
    //array to keep check visit to question
@@ -47,7 +47,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     public static QuestionListFragment newInstance(int position, Question question) {
         QuestionListFragment fragment = new QuestionListFragment();
         Bundle args = new Bundle();
-        i = position-1;
+        i = position - 1;
         args.putString(QUESTION_NO, "Question " + String.valueOf(position));
         args.putString(QUESTION, question.getQuestion());
         args.putString(OPTIONA, question.getOptionA());
@@ -71,19 +71,19 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         tvOptionB = rootView.findViewById(R.id.tv_option_b);
         tvOptionC = rootView.findViewById(R.id.tv_option_c);
         tvOptionD = rootView.findViewById(R.id.tv_option_d);
-        tvAnswer = rootView.findViewById(R.id.tv_answer);
-        tvhint = rootView.findViewById(R.id.tv_hint);
-        tvSolution = rootView.findViewById(R.id.tv_solution);
-        imageViewSubmit = rootView.findViewById(R.id.iv_submit_icon);
+
+        imageViewHint = getActivity().findViewById(R.id.iv_hint);
+        imageViewSolution = getActivity().findViewById(R.id.iv_solution);
+        imageViewSubmit = getActivity().findViewById(R.id.iv_submit);
 
 
         tvOptionA.setOnClickListener(this);
         tvOptionB.setOnClickListener(this);
         tvOptionC.setOnClickListener(this);
         tvOptionD.setOnClickListener(this);
-        tvhint.setOnClickListener(this);
-        tvSolution.setOnClickListener(this);
-        tvAnswer.setOnClickListener(this);
+
+        imageViewHint.setOnClickListener(this);
+        imageViewSolution.setOnClickListener(this);
         imageViewSubmit.setOnClickListener(this);
 
         tvQuestionNo.setText(getArguments().getString(QUESTION_NO));
@@ -99,102 +99,92 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         if (view.getId() == R.id.tv_option_a) {
             logger.info(getArguments().getString(ANSWER) + "ANSWER");
-            //arr[Integer.parseInt(QUESTION_NO)]=true;
             if (getArguments().getString(ANSWER).equalsIgnoreCase("A")) {
+                QuestionListActivity.count++;
                 tvOptionA.setBackgroundColor(Color.GREEN);
-                if(arr[i]==false)
-                {
+                if (!arr[i]) {
                     count++;
                 }
                 logger.info(count + "count");
-                arr[i]=true;
-            }else{
+                arr[i] = true;
+            } else {
                 tvOptionA.setBackgroundColor(Color.RED);
-                if(arr[i]==false)
-                {
+                if (!arr[i]) {
                     count--;
                 }
                 logger.info(count + "count");
-                arr[i]=true;
+                arr[i] = true;
             }
         }
         if (view.getId() == R.id.tv_option_b) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("B")) {
+                QuestionListActivity.count++;
                 tvOptionB.setBackgroundColor(Color.GREEN);
-                if(arr[i]==false)
-                {
+                if (!arr[i]) {
                     count++;
                 }
                 logger.info(count + "count");
-                arr[i]=true;
-            }else{
+                arr[i] = true;
+            } else {
                 tvOptionB.setBackgroundColor(Color.RED);
-                if(arr[i]==false)
-                {
+                if (!arr[i]) {
                     count--;
                 }
                 logger.info(count + "count");
-                arr[i]=true;
+                arr[i] = true;
             }
         }
         if (view.getId() == R.id.tv_option_c) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("C")) {
+                QuestionListActivity.count++;
                 tvOptionC.setBackgroundColor(Color.GREEN);
-                if(arr[i]==false)
-                {
+                if (!arr[i]) {
                     count++;
                 }
                 logger.info(count + "count");
-                arr[i]=true;
-            }else{
+                arr[i] = true;
+            } else {
                 tvOptionC.setBackgroundColor(Color.RED);
-                if(arr[i]==false)
-                {
+                if (!arr[i]) {
                     count--;
                 }
                 logger.info(count + "count");
-                arr[i]=true;
+                arr[i] = true;
             }
         }
         if (view.getId() == R.id.tv_option_d) {
 
             if (getArguments().getString(ANSWER).equalsIgnoreCase("D")) {
+                QuestionListActivity.count++;
                 tvOptionD.setBackgroundColor(Color.GREEN);
-                if(arr[i]==false)
-                {
+                if (!arr[i]) {
                     count++;
                 }
                 logger.info(count + "count");
-                arr[i]=true;
-            }else{
+                arr[i] = true;
+            } else {
                 tvOptionD.setBackgroundColor(Color.RED);
-                if(arr[i]==false)
-                {
+                if (!arr[i]) {
                     count--;
                 }
                 logger.info(count + "count");
-                arr[i]=true;
+                arr[i] = true;
             }
         }
-        if (view.getId() == R.id.tv_hint) {
-            if(getArguments().getString(HINT).equalsIgnoreCase(""))
-                customDialog=new CustomDialog(getActivity(),"Hint","Basic","GOT IT!");
+        if (view.getId() == R.id.iv_hint) {
+            if (getArguments().getString(HINT).equalsIgnoreCase(""))
+                customDialog = new CustomDialog(getActivity(), "Hint", "Basic", "GOT IT!");
             else
                 customDialog = new CustomDialog(getActivity(), "Hint", getArguments().getString(HINT), "GOT IT!");
             customDialog.show();
         }
-        if (view.getId() == R.id.tv_solution) {
+        if (view.getId() == R.id.iv_solution) {
             customDialog = new CustomDialog(getActivity(), "Solution", getArguments().getString(SOLUTION), "GOT IT!");
             customDialog.show();
         }
-        if (view.getId() == R.id.tv_answer) {
-            customDialog = new CustomDialog(getActivity(), "Answer", getArguments().getString(ANSWER), "GOT IT!");
-            customDialog.show();
-        }
-        if (view.getId() == R.id.iv_submit_icon) {
+        if (view.getId() == R.id.iv_submit) {
             customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit? your score is : "+ count, "YES");
             customDialog.show();
         }
-
     }
 }
