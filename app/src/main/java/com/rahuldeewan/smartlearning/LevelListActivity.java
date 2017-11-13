@@ -36,7 +36,6 @@ public class LevelListActivity extends AppCompatActivity {
         logger = Logger.getLogger("LevelListActivity");
 
         Intent intent = getIntent();
-        int topicId = intent.getIntExtra("Topic_ID", 0);
         final String topicName = intent.getStringExtra("Topic_Name");
         logger.info(topicName);
         databaseReference = FirebaseDatabase.getInstance().getReference("levels");
@@ -69,7 +68,6 @@ public class LevelListActivity extends AppCompatActivity {
                 logger.info(dataSnapshot + "12345678");
                 for (DataSnapshot levelKey : dataSnapshot.getChildren()) {
                     Level currentLevel = levelKey.getValue(Level.class);
-                    logger.info(currentLevel.getID() + "LevelId");
                     levelList.add(currentLevel);
                 }
                 levelAdapter = new LevelAdapter(LevelListActivity.this, levelList);
@@ -81,7 +79,5 @@ public class LevelListActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 }

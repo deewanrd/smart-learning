@@ -33,8 +33,8 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private TextView tvOptionD;
     private TextView tvAnswer;
     private CustomDialog customDialog;
-    private ImageView tvhint;
-    private ImageView tvSolution;
+    private ImageView imageViewHint;
+    private ImageView imageViewSolution;
     private ImageView imageViewSubmit;
     private Logger logger = Logger.getLogger("QuestionListFragment");
     boolean[] arr = new boolean[15];
@@ -69,19 +69,19 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         tvOptionB = rootView.findViewById(R.id.tv_option_b);
         tvOptionC = rootView.findViewById(R.id.tv_option_c);
         tvOptionD = rootView.findViewById(R.id.tv_option_d);
-        tvAnswer = rootView.findViewById(R.id.tv_answer);
-        tvhint = rootView.findViewById(R.id.tv_hint);
-        tvSolution = rootView.findViewById(R.id.tv_solution);
-        imageViewSubmit = rootView.findViewById(R.id.iv_submit_icon);
+
+        imageViewHint = getActivity().findViewById(R.id.iv_hint);
+        imageViewSolution = getActivity().findViewById(R.id.iv_solution);
+        imageViewSubmit = getActivity().findViewById(R.id.iv_submit);
 
 
         tvOptionA.setOnClickListener(this);
         tvOptionB.setOnClickListener(this);
         tvOptionC.setOnClickListener(this);
         tvOptionD.setOnClickListener(this);
-        tvhint.setOnClickListener(this);
-        tvSolution.setOnClickListener(this);
-        tvAnswer.setOnClickListener(this);
+
+        imageViewHint.setOnClickListener(this);
+        imageViewSolution.setOnClickListener(this);
         imageViewSubmit.setOnClickListener(this);
 
         tvQuestionNo.setText(getArguments().getString(QUESTION_NO));
@@ -169,22 +169,18 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
                 arr[i] = true;
             }
         }
-        if (view.getId() == R.id.tv_hint) {
+        if (view.getId() == R.id.iv_hint) {
             if (getArguments().getString(HINT).equalsIgnoreCase(""))
                 customDialog = new CustomDialog(getActivity(), "Hint", "Basic", "GOT IT!");
             else
                 customDialog = new CustomDialog(getActivity(), "Hint", getArguments().getString(HINT), "GOT IT!");
             customDialog.show();
         }
-        if (view.getId() == R.id.tv_solution) {
+        if (view.getId() == R.id.iv_solution) {
             customDialog = new CustomDialog(getActivity(), "Solution", getArguments().getString(SOLUTION), "GOT IT!");
             customDialog.show();
         }
-        if (view.getId() == R.id.tv_answer) {
-            customDialog = new CustomDialog(getActivity(), "Answer", getArguments().getString(ANSWER), "GOT IT!");
-            customDialog.show();
-        }
-        if (view.getId() == R.id.iv_submit_icon) {
+        if (view.getId() == R.id.iv_submit) {
             customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit?", "YES");
             customDialog.show();
         }
