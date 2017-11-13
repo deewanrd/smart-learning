@@ -32,10 +32,10 @@ public class QuestionListActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     Logger logger;
+    static int count = 0;
+    static int size =0;
     GeometricProgressView geometricProgressView;
     Spinner spinnerQuestion;
-
-    static int count = 0;
     List<String> list;
 
     @Override
@@ -62,12 +62,13 @@ public class QuestionListActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                count = 0;
+                count=0;
+                int s=0;
                 geometricProgressView.setVisibility(View.GONE);
                 for (DataSnapshot questionKey : dataSnapshot.getChildren()) {
-                    Question currentQuestion = questionKey.getValue(Question.class);
-                    questionList.add(currentQuestion);
-                }
+                    Question currentqQuestion = questionKey.getValue(Question.class);
+                    questionList.add(currentqQuestion);
+                size = s;
 
                 pagerAdapter = new ScreenAdapter(getSupportFragmentManager(), questionList);
                 viewPager.setAdapter(pagerAdapter);
