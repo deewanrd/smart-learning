@@ -9,4 +9,5 @@
     <string name="sol">Solution</string>
     <string name="ans">Answer</string>
     <string name="question_no">Question</string>
+    <string name="app_intro">App Intro</string>
 </resources>

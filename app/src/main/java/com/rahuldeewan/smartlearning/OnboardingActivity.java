@@ -2,6 +2,7 @@ package com.rahuldeewan.smartlearning;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,9 +23,11 @@ public class OnboardingActivity extends AppIntro {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addSlide(AppIntroFragment.newInstance("Title", "Description", R.drawable.ic_done_white, getColor(R.color.colorPrimary)));
-        addSlide(AppIntroFragment.newInstance("Title", "Description", R.drawable.icon_submit, getColor(R.color.colorAccent)));
+        addSlide(AppIntroFragment.newInstance("Title", "Description", R.drawable.ic_done_white, getColor(R.color.purple)));
+        addSlide(AppIntroFragment.newInstance("Title", "Description", R.drawable.icon_submit, getColor(R.color.cyan)));
         addSlide(AppIntroFragment.newInstance("Title", "Description", R.drawable.ic_arrow_back_white, getColor(R.color.colorPrimaryDark)));
+        setBarColor(Color.parseColor("#3F51B5"));
+        setSeparatorColor(Color.parseColor("#2196F3"));
     }
 
     @Override
