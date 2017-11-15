@@ -81,6 +81,7 @@ public class QuestionListActivity extends AppCompatActivity {
                     spinnerQuestion.setPrompt("Jump to Question ");
                     spinnerQuestion.setAdapter(arrayAdapter);
                     spinnerQuestion.setSelection(0);
+
                     spinnerQuestion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

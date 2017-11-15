@@ -25,9 +25,10 @@ public class OnboardingActivity extends AppIntro {
 
         addSlide(AppIntroFragment.newInstance("Title", "Description", R.drawable.ic_done_white, getColor(R.color.purple)));
         addSlide(AppIntroFragment.newInstance("Title", "Description", R.drawable.icon_submit, getColor(R.color.cyan)));
-        addSlide(AppIntroFragment.newInstance("Title", "Description", R.drawable.ic_arrow_back_white, getColor(R.color.colorPrimaryDark)));
-        setBarColor(Color.parseColor("#3F51B5"));
-        setSeparatorColor(Color.parseColor("#2196F3"));
+        addSlide(AppIntroFragment.newInstance("Title", "Description", R.drawable.ic_arrow_back_white, getColor(R.color.pink)));
+        setFlowAnimation();
+        setBarColor(Color.parseColor("#000000"));
+        setSeparatorColor(Color.parseColor("#FFFFFF"));
     }
 
     @Override
@@ -39,7 +40,7 @@ public class OnboardingActivity extends AppIntro {
     private void finishOnBoarding() {
         SharedPreferences preferences = getSharedPreferences("mypreferences", MODE_PRIVATE);
         preferences.edit().putBoolean("onboarding_complete", true).apply();
-        startActivity(new Intent(OnboardingActivity.this,MainActivity.class));
+        startActivity(new Intent(OnboardingActivity.this, MainActivity.class));
         finish();
     }
 

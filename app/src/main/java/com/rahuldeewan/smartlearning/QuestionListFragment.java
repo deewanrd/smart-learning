@@ -177,7 +177,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
             customDialog.show();
         }
         if (view.getId() == R.id.iv_submit) {
-            customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit? your score is : " + count, "YES");
+            customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit? your score is : " + count, "NO","YES");
             customDialog.show();
         }
     }
