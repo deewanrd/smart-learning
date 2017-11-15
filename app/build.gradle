@@ -31,6 +31,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'net.bohush.geometricprogressview:geometricprogressview:1.1.1'
     compile 'com.github.apl-devs:appintro:v4.2.2'
+    compile 'com.an.customfontview:customfont:0.1.0'
 
     testCompile 'junit:junit:4.12'
 }

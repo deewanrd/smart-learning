@@ -30,6 +30,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private TextView tvOptionB;
     private TextView tvOptionC;
     private TextView tvOptionD;
+    private ImageView imageViewSolution;
     private Logger logger = Logger.getLogger("QuestionListFragment");
     //array to keep check visit to question
     boolean[] arr = new boolean[size];
@@ -66,7 +67,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         tvOptionD = rootView.findViewById(R.id.tv_option_d);
 
         ImageView imageViewHint = getActivity().findViewById(R.id.iv_hint);
-        ImageView imageViewSolution = getActivity().findViewById(R.id.iv_solution);
+        imageViewSolution = getActivity().findViewById(R.id.iv_solution);
         ImageView imageViewSubmit = getActivity().findViewById(R.id.iv_submit);
 
         tvOptionA.setOnClickListener(this);
@@ -142,7 +143,6 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
             }
         }
         if (view.getId() == R.id.tv_option_d) {
-
             if (getArguments().getString(ANSWER).equalsIgnoreCase("D")) {
                 tvOptionD.setBackgroundColor(Color.GREEN);
                 if (!arr[i]) {

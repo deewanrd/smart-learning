@@ -10,4 +10,6 @@
     <string name="ans">Answer</string>
     <string name="question_no">Question</string>
     <string name="app_intro">App Intro</string>
+    <string name="main_activity_label">Choose Topic</string>
+    <string name="level_activity_label">Choose Level</string>
 </resources>

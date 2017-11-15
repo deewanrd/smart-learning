@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("topics");
         topicsList = new ArrayList<>();
         topicListView = findViewById(R.id.listview_topic);
-        geometricProgressView=findViewById(R.id.geometric_progress_view);
+        geometricProgressView = findViewById(R.id.geometric_progress_view);
 
         topicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

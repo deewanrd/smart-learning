@@ -70,52 +70,52 @@ public class QuestionListActivity extends AppCompatActivity {
                     questionList.add(currentQuestion);
                     s++;
                 }
-                    size =s;
-                    pagerAdapter = new ScreenAdapter(getSupportFragmentManager(), questionList);
-                    viewPager.setAdapter(pagerAdapter);
-                    list = new ArrayList<>();
-                    for (int j = 1; j <= questionList.size(); j++) {
-                        list.add("Question " + j);
-                    }
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, list);
-                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinnerQuestion.setPrompt("Jump to Question ");
-                    spinnerQuestion.setAdapter(arrayAdapter);
-                    spinnerQuestion.setSelection(0);
-
-                    spinnerQuestion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            viewPager.setCurrentItem(i);
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-                    viewPager.setOffscreenPageLimit(questionList.size());
-                    viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                        @Override
-                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                        }
-
-                        @Override
-                        public void onPageSelected(int position) {
-                            spinnerQuestion.setSelection(position);
-                        }
-
-                        @Override
-                        public void onPageScrollStateChanged(int state) {
-
-                        }
-                    });
+                size = s;
+                pagerAdapter = new ScreenAdapter(getSupportFragmentManager(), questionList);
+                viewPager.setAdapter(pagerAdapter);
+                list = new ArrayList<>();
+                for (int j = 1; j <= questionList.size(); j++) {
+                    list.add("Question " + j);
                 }
-            
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, list);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerQuestion.setPrompt("Jump to Question ");
+                spinnerQuestion.setAdapter(arrayAdapter);
+                spinnerQuestion.setSelection(0);
+                viewPager.setOffscreenPageLimit(questionList.size());
+            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        spinnerQuestion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                viewPager.setCurrentItem(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                spinnerQuestion.setSelection(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
             }
         });

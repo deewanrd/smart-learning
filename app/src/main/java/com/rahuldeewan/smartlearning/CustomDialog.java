@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -58,12 +57,9 @@ public class CustomDialog extends Dialog {
         });
         if (!check) {
             btnSecondary.setVisibility(View.GONE);
-            btnPrimary.getLayoutParams().width= RelativeLayout.LayoutParams.MATCH_PARENT;
+            btnPrimary.getLayoutParams().width = RelativeLayout.LayoutParams.MATCH_PARENT;
         }
         if (check) {
-            int width=LinearLayout.LayoutParams.MATCH_PARENT;
-//            btnPrimary.getLayoutParams().width=width/2;
-//            btnSecondary.getLayoutParams().width=width/2;
             btnSecondary.setVisibility(View.VISIBLE);
             btnSecondary.setText(subMessageNo);
         }

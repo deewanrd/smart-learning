@@ -5,12 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.rahuldeewan.smartlearning.MainActivity">
+    android:layout_marginVertical="10dp"
+    tools:context="com.rahuldeewan.smartlearning.MainActivity"
+    tools:targetApi="o">
 
     <ListView
         android:id="@+id/listview_topic"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="5dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10.0sp"
+        tools:targetApi="o" />
 
     <net.bohush.geometricprogressview.GeometricProgressView
         android:id="@+id/geometric_progress_view"

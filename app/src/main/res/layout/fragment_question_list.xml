@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll_view"
     android:layout_width="match_parent"
@@ -16,7 +17,7 @@
         android:textSize="15sp"
         android:textStyle="bold" />
 
-    <TextView
+    <com.an.customfontview.CustomTextView
         android:id="@+id/tv_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +25,8 @@
         android:text="@string/question"
         android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:textFontPath="fonts/Exo-Regular.otf" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +34,7 @@
         android:layout_marginTop="30dp"
         android:orientation="vertical">
 
-        <TextView
+        <com.an.customfontview.CustomTextView
             android:id="@+id/tv_option_a"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,9 +44,10 @@
             android:focusable="true"
             android:text="@string/opA"
             android:textAlignment="center"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:textFontPath="fonts/Exo-Regular.otf" />
 
-        <TextView
+        <com.an.customfontview.CustomTextView
             android:id="@+id/tv_option_b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,9 +57,10 @@
             android:focusable="true"
             android:text="@string/opB"
             android:textAlignment="center"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:textFontPath="fonts/Exo-Regular.otf" />
 
-        <TextView
+        <com.an.customfontview.CustomTextView
             android:id="@+id/tv_option_c"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,9 +70,10 @@
             android:focusable="true"
             android:text="@string/opC"
             android:textAlignment="center"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:textFontPath="fonts/Exo-Regular.otf" />
 
-        <TextView
+        <com.an.customfontview.CustomTextView
             android:id="@+id/tv_option_d"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +83,8 @@
             android:focusable="true"
             android:text="@string/opD"
             android:textAlignment="center"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:textFontPath="fonts/Exo-Regular.otf" />
 
     </LinearLayout>
 </LinearLayout>
