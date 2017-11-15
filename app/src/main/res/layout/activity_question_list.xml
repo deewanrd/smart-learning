@@ -9,8 +9,8 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp" />
+        android:layout_height="wrap_content"
+        android:padding="10dp" />
 
     <net.bohush.geometricprogressview.GeometricProgressView
         android:id="@+id/geometric_progress_view"
@@ -37,9 +37,9 @@
 
             <ImageView
                 android:id="@+id/iv_hint"
-                android:layout_width="30dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/hint"
@@ -56,11 +56,11 @@
                 android:id="@+id/iv_solution"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/ic_launcher_background"
+                android:src="@drawable/ic_answer"
                 tools:ignore="ContentDescription" />
 
             <View
@@ -74,7 +74,8 @@
                 android:id="@+id/spinner_question_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
+                android:scrollbarSize="10dp"
                 android:textAlignment="center" />
 
             <View
@@ -86,9 +87,11 @@
 
             <ImageView
                 android:id="@+id/iv_submit"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_submit" />
+                android:layout_width="70dp"
+                android:layout_height="65dp"
+                android:padding="10dp"
+                android:src="@drawable/icon_submit"
+                tools:ignore="ContentDescription" />
 
         </LinearLayout>
     </android.support.v7.widget.Toolbar>

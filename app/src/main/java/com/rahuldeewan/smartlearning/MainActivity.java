@@ -2,10 +2,12 @@ package com.rahuldeewan.smartlearning;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Topic> topicsList;
     private ListView topicListView;
     GeometricProgressView geometricProgressView;
+    private boolean exit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,5 +74,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            super.onBackPressed();
+            return;
+        }
+        this.exit = true;
+        Toast.makeText(this, "Press Back again to exit", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                exit = false;
+            }
+        }, 2000);
     }
 }
