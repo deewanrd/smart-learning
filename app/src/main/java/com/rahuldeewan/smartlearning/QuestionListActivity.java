@@ -68,8 +68,9 @@ public class QuestionListActivity extends AppCompatActivity {
                 for (DataSnapshot questionKey : dataSnapshot.getChildren()) {
                     Question currentQuestion = questionKey.getValue(Question.class);
                     questionList.add(currentQuestion);
-                    size = s;
-
+                    s++;
+                }
+                    size =s;
                     pagerAdapter = new ScreenAdapter(getSupportFragmentManager(), questionList);
                     viewPager.setAdapter(pagerAdapter);
                     list = new ArrayList<>();
@@ -111,7 +112,7 @@ public class QuestionListActivity extends AppCompatActivity {
                         }
                     });
                 }
-            }
+            
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
