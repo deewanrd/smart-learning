@@ -15,7 +15,7 @@ public class SplashActivity extends AppCompatActivity {
 
         final SharedPreferences preferences = getSharedPreferences("mypreferences", MODE_PRIVATE);
 
-        int SPLASH_TIME_OUT = 3000;
+        int SPLASH_TIME_OUT = 1000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

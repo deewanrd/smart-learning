@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.logging.Logger;
@@ -21,8 +20,8 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private static final String OPTIONB = "optionB";
     private static final String OPTIONC = "optionC";
     private static final String OPTIOND = "optionD";
-    private static final String HINT = "hint";
-    private static final String SOLUTION = "solution";
+    static final String HINT = "hint";
+    static final String SOLUTION = "solution";
     private static final String ANSWER = "answer";
 
     private static int i = 0;
@@ -30,8 +29,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private TextView tvOptionB;
     private TextView tvOptionC;
     private TextView tvOptionD;
-    private ImageView imageViewSolution;
-    private Logger logger = Logger.getLogger("QuestionListFragment");
+    private static Logger logger = Logger.getLogger("QuestionListFragment");
     //array to keep check visit to question
     boolean[] arr = new boolean[size];
 
@@ -66,18 +64,10 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         tvOptionC = rootView.findViewById(R.id.tv_option_c);
         tvOptionD = rootView.findViewById(R.id.tv_option_d);
 
-        ImageView imageViewHint = getActivity().findViewById(R.id.iv_hint);
-        imageViewSolution = getActivity().findViewById(R.id.iv_solution);
-        ImageView imageViewSubmit = getActivity().findViewById(R.id.iv_submit);
-
         tvOptionA.setOnClickListener(this);
         tvOptionB.setOnClickListener(this);
         tvOptionC.setOnClickListener(this);
         tvOptionD.setOnClickListener(this);
-
-        imageViewHint.setOnClickListener(this);
-        imageViewSolution.setOnClickListener(this);
-        imageViewSubmit.setOnClickListener(this);
 
         tvQuestionNo.setText(getArguments().getString(QUESTION_NO));
         tvQuestion.setText(getArguments().getString(QUESTION));
@@ -158,22 +148,6 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
                 logger.info(count + "count");
                 arr[i] = true;
             }
-        }
-        CustomDialog customDialog;
-        if (view.getId() == R.id.iv_hint) {
-            if (getArguments().getString(HINT).equalsIgnoreCase(""))
-                customDialog = new CustomDialog(getActivity(), "Hint", "Basic", "GOT IT!");
-            else
-                customDialog = new CustomDialog(getActivity(), "Hint", getArguments().getString(HINT), "GOT IT!");
-            customDialog.show();
-        }
-        if (view.getId() == R.id.iv_solution) {
-            customDialog = new CustomDialog(getActivity(), "Solution", getArguments().getString(SOLUTION), "GOT IT!");
-            customDialog.show();
-        }
-        if (view.getId() == R.id.iv_submit) {
-            customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit? your score is : " + count, "NO", "YES");
-            customDialog.show();
         }
     }
 }

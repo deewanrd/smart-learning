@@ -11,18 +11,14 @@ import android.widget.TextView;
 
 public class CustomDialog extends Dialog {
 
-    private Activity activity;
     private String title;
     private String message;
     private String subMessageYes;
     private String subMessageNo;
     private boolean check;
-    private TextView textViewDialogTitle, textViewDialogMessage;
-    private Button btnPrimary, btnSecondary;
 
     CustomDialog(@NonNull Activity activity, String title, String message, String subMessage) {
         super(activity);
-        this.activity = activity;
         this.title = title;
         this.message = message;
         this.subMessageYes = subMessage;
@@ -42,10 +38,10 @@ public class CustomDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_dialog);
-        textViewDialogTitle = findViewById(R.id.tv_dialog_title);
-        textViewDialogMessage = findViewById(R.id.tv_dialog_message);
-        btnPrimary = findViewById(R.id.btn_primary);
-        btnSecondary = findViewById(R.id.btn_secondary);
+        TextView textViewDialogTitle = findViewById(R.id.tv_dialog_title);
+        TextView textViewDialogMessage = findViewById(R.id.tv_dialog_message);
+        Button btnPrimary = findViewById(R.id.btn_primary);
+        Button btnSecondary = findViewById(R.id.btn_secondary);
         btnPrimary.setText(subMessageYes);
         textViewDialogTitle.setText(title);
         textViewDialogMessage.setText(message);

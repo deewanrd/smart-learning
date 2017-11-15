@@ -14,10 +14,10 @@ public class Topic {
 
     }
 
-    public Topic(int id, String name,String link) {
+    public Topic(int id, String name, String link) {
         this.ID = id;
         this.Name = name;
-        this.link=link;
+        this.link = link;
     }
 
     public int getId() {
@@ -36,11 +36,11 @@ public class Topic {
         this.Name = name;
     }
 
-    public void setLink(String link){
-        this.link=link;
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    public String getLink(){
+    String getLink() {
         return link;
     }
 }

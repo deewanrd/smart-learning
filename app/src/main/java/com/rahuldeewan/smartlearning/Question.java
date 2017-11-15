@@ -29,7 +29,7 @@ public class Question {
         this.answer = answer;
     }
 
-    public String getQuestion() {
+    String getQuestion() {
         return question;
     }
 
@@ -37,7 +37,7 @@ public class Question {
         this.question = question;
     }
 
-    public String getOptionA() {
+    String getOptionA() {
         return optionA;
     }
 
@@ -45,7 +45,7 @@ public class Question {
         this.optionA = optionA;
     }
 
-    public String getOptionB() {
+    String getOptionB() {
         return optionB;
     }
 
@@ -53,7 +53,7 @@ public class Question {
         this.optionB = optionB;
     }
 
-    public String getOptionC() {
+    String getOptionC() {
         return optionC;
     }
 
@@ -61,7 +61,7 @@ public class Question {
         this.optionC = optionC;
     }
 
-    public String getOptionD() {
+    String getOptionD() {
         return optionD;
     }
 
@@ -69,7 +69,7 @@ public class Question {
         this.optionD = optionD;
     }
 
-    public String getHint() {
+    String getHint() {
         return hint;
     }
 
@@ -77,7 +77,7 @@ public class Question {
         this.hint = hint;
     }
 
-    public String getSolution() {
+    String getSolution() {
         return solution;
     }
 
@@ -85,7 +85,7 @@ public class Question {
         this.solution = solution;
     }
 
-    public String getAnswer() {
+    String getAnswer() {
         return answer;
     }
 

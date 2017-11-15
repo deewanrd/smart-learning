@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class QuestionListActivity extends AppCompatActivity {
+
+public class QuestionListActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DatabaseReference databaseReference;
     private List<Question> questionList;
@@ -37,6 +39,9 @@ public class QuestionListActivity extends AppCompatActivity {
     GeometricProgressView geometricProgressView;
     Spinner spinnerQuestion;
     List<String> list;
+    String hint = "";
+    String solution = "";
+    CustomDialog customDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,12 @@ public class QuestionListActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.view_pager);
         geometricProgressView = findViewById(R.id.geometric_progress_view);
         spinnerQuestion = findViewById(R.id.spinner_question_no);
+        ImageView imageViewHint = findViewById(R.id.iv_hint);
+        ImageView imageViewSolution = findViewById(R.id.iv_solution);
+        ImageView imageViewSubmit = findViewById(R.id.iv_submit);
+        imageViewSolution.setOnClickListener(this);
+        imageViewHint.setOnClickListener(this);
+        imageViewSubmit.setOnClickListener(this);
     }
 
     @Override
@@ -79,10 +90,11 @@ public class QuestionListActivity extends AppCompatActivity {
                 }
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, list);
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerQuestion.setPrompt("Jump to Question ");
                 spinnerQuestion.setAdapter(arrayAdapter);
                 spinnerQuestion.setSelection(0);
                 viewPager.setOffscreenPageLimit(questionList.size());
+                hint = questionList.get(0).getHint();
+                solution = questionList.get(0).getSolution();
             }
 
             @Override
@@ -112,6 +124,8 @@ public class QuestionListActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 spinnerQuestion.setSelection(position);
+                hint = questionList.get(position).getHint();
+                solution = questionList.get(position).getSolution();
             }
 
             @Override
@@ -119,6 +133,23 @@ public class QuestionListActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.iv_hint) {
+            if (hint.equalsIgnoreCase(""))
+                customDialog = new CustomDialog(QuestionListActivity.this, getString(R.string.hint), getString(R.string.basic), getString(R.string.got_it));
+            else
+                customDialog = new CustomDialog(QuestionListActivity.this, getString(R.string.hint), hint, getString(R.string.got_it));
+        }
+        if (view.getId() == R.id.iv_solution) {
+            customDialog = new CustomDialog(QuestionListActivity.this, getString(R.string.sol), solution, getString(R.string.got_it));
+        }
+        if (view.getId() == R.id.iv_submit) {
+            customDialog = new CustomDialog(QuestionListActivity.this, getString(R.string.submit), getString(R.string.warning_message) + count, getString(R.string.no), getString(R.string.yes));
+        }
+        customDialog.show();
     }
 
     private class ScreenAdapter extends FragmentStatePagerAdapter {

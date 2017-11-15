@@ -43,7 +43,7 @@
             android:clickable="true"
             android:focusable="true"
             android:text="@string/opA"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textSize="15sp"
             app:textFontPath="fonts/Exo-Regular.otf" />
 
@@ -56,7 +56,7 @@
             android:clickable="true"
             android:focusable="true"
             android:text="@string/opB"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textSize="15sp"
             app:textFontPath="fonts/Exo-Regular.otf" />
 
@@ -69,7 +69,7 @@
             android:clickable="true"
             android:focusable="true"
             android:text="@string/opC"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textSize="15sp"
             app:textFontPath="fonts/Exo-Regular.otf" />
 
@@ -82,7 +82,7 @@
             android:clickable="true"
             android:focusable="true"
             android:text="@string/opD"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textSize="15sp"
             app:textFontPath="fonts/Exo-Regular.otf" />
 
