@@ -69,7 +69,6 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         ImageView imageViewSolution = getActivity().findViewById(R.id.iv_solution);
         ImageView imageViewSubmit = getActivity().findViewById(R.id.iv_submit);
 
-
         tvOptionA.setOnClickListener(this);
         tvOptionB.setOnClickListener(this);
         tvOptionC.setOnClickListener(this);
@@ -93,7 +92,6 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         if (view.getId() == R.id.tv_option_a) {
             logger.info(getArguments().getString(ANSWER) + "ANSWER");
             if (getArguments().getString(ANSWER).equalsIgnoreCase("A")) {
-                QuestionListActivity.count++;
                 tvOptionA.setBackgroundColor(Color.GREEN);
                 if (!arr[i]) {
                     count++;
@@ -111,7 +109,6 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         }
         if (view.getId() == R.id.tv_option_b) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("B")) {
-                QuestionListActivity.count++;
                 tvOptionB.setBackgroundColor(Color.GREEN);
                 if (!arr[i]) {
                     count++;
@@ -129,7 +126,6 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         }
         if (view.getId() == R.id.tv_option_c) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("C")) {
-                QuestionListActivity.count++;
                 tvOptionC.setBackgroundColor(Color.GREEN);
                 if (!arr[i]) {
                     count++;
@@ -148,7 +144,6 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         if (view.getId() == R.id.tv_option_d) {
 
             if (getArguments().getString(ANSWER).equalsIgnoreCase("D")) {
-                QuestionListActivity.count++;
                 tvOptionD.setBackgroundColor(Color.GREEN);
                 if (!arr[i]) {
                     count++;
@@ -177,7 +172,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
             customDialog.show();
         }
         if (view.getId() == R.id.iv_submit) {
-            customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit? your score is : " + count, "NO","YES");
+            customDialog = new CustomDialog(getActivity(), "Submit", "Are you sure you want to submit? your score is : " + count, "NO", "YES");
             customDialog.show();
         }
     }
