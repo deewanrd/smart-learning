@@ -1,7 +1,9 @@
 package com.rahuldeewan.smartlearning;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -99,19 +101,36 @@ public class LevelListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.logout:
             {
-                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                if(firebaseAuth.getCurrentUser() == null){
-                    //closing this activity
-                    finish();
-                    //starting login activity
-                    startActivity(new Intent(this, LoginActivity.class));
-                }
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setMessage("Are you sure,You want to logout");
+                alertDialogBuilder.setPositiveButton("yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                                if(firebaseAuth.getCurrentUser() == null){
+                                    //closing this activity
+                                    finish();
+                                    //starting login activity
+                                    startActivity(new Intent(LevelListActivity.this, LoginActivity.class));
+                                }
+                                FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                firebaseAuth.signOut();
+                                finish();
+                                startActivity(new Intent(LevelListActivity.this, LoginActivity.class));
+                            }
+                        });
 
-                firebaseAuth.signOut();
-                finish();
-                startActivity(new Intent(this, LoginActivity.class));
+                alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
             return true;
             default:

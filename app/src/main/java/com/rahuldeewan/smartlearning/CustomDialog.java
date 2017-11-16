@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 public class CustomDialog extends Dialog {
 
+    private Activity activity;
     private String title;
     private String message;
     private String subMessageYes;
@@ -19,6 +20,7 @@ public class CustomDialog extends Dialog {
 
     CustomDialog(@NonNull Activity activity, String title, String message, String subMessage) {
         super(activity);
+        this.activity=activity;
         this.title = title;
         this.message = message;
         this.subMessageYes = subMessage;
@@ -45,19 +47,28 @@ public class CustomDialog extends Dialog {
         btnPrimary.setText(subMessageYes);
         textViewDialogTitle.setText(title);
         textViewDialogMessage.setText(message);
-        btnPrimary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hide();
-            }
-        });
+
         if (!check) {
+            btnPrimary.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    hide();
+                }
+            });
             btnSecondary.setVisibility(View.GONE);
             btnPrimary.getLayoutParams().width = RelativeLayout.LayoutParams.MATCH_PARENT;
         }
         if (check) {
-            btnSecondary.setVisibility(View.VISIBLE);
+
             btnSecondary.setText(subMessageNo);
+            btnSecondary.setVisibility(View.VISIBLE);
+            btnSecondary.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    hide();
+                }
+            });
+
         }
     }
 }
