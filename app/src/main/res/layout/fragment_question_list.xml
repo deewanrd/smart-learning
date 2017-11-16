@@ -1,96 +1,90 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context="com.rahuldeewan.smartlearning.QuestionListFragment">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/scroll_view"
+    <TextView
+        android:id="@+id/tv_question_no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="vertical"
-        tools:context="com.rahuldeewan.smartlearning.QuestionListFragment">
+        android:background="@android:color/holo_orange_light"
+        android:text="@string/question_no"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_question_no"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/holo_orange_light"
-            android:text="@string/question_no"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+    <com.an.customfontview.CustomTextView
+        android:id="@+id/tv_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/question"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:textFontPath="fonts/Exo-Regular.otf" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
 
         <com.an.customfontview.CustomTextView
-            android:id="@+id/tv_question"
+            android:id="@+id/tv_option_a"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@string/question"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:background="@drawable/tv_border"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/opA"
+            android:textAlignment="viewStart"
+            android:textSize="15sp"
             app:textFontPath="fonts/Exo-Regular.otf" />
 
-        <LinearLayout
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/tv_option_b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
+            android:layout_margin="5dp"
+            android:background="@drawable/tv_border"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/opB"
+            android:textAlignment="viewStart"
+            android:textSize="15sp"
+            app:textFontPath="fonts/Exo-Regular.otf" />
 
-            <com.an.customfontview.CustomTextView
-                android:id="@+id/tv_option_a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/tv_border"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/opA"
-                android:textAlignment="viewStart"
-                android:textSize="15sp"
-                app:textFontPath="fonts/Exo-Regular.otf" />
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/tv_option_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/tv_border"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/opC"
+            android:textAlignment="viewStart"
+            android:textSize="15sp"
+            app:textFontPath="fonts/Exo-Regular.otf" />
 
-            <com.an.customfontview.CustomTextView
-                android:id="@+id/tv_option_b"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/tv_border"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/opB"
-                android:textAlignment="viewStart"
-                android:textSize="15sp"
-                app:textFontPath="fonts/Exo-Regular.otf" />
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/tv_option_d"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/tv_border"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/opD"
+            android:textAlignment="viewStart"
+            android:textSize="15sp"
+            app:textFontPath="fonts/Exo-Regular.otf" />
 
-            <com.an.customfontview.CustomTextView
-                android:id="@+id/tv_option_c"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/tv_border"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/opC"
-                android:textAlignment="viewStart"
-                android:textSize="15sp"
-                app:textFontPath="fonts/Exo-Regular.otf" />
-
-            <com.an.customfontview.CustomTextView
-                android:id="@+id/tv_option_d"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/tv_border"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/opD"
-                android:textAlignment="viewStart"
-                android:textSize="15sp"
-                app:textFontPath="fonts/Exo-Regular.otf" />
-
-        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>
