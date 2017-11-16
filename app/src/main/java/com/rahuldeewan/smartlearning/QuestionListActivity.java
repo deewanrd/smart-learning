@@ -166,7 +166,7 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
         }
 
         @Override
-        public int getCount(){
+        public int getCount() {
             return questionList.size();
         }
     }
