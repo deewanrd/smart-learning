@@ -65,7 +65,7 @@ public class LevelListActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         geometricProgressView.setVisibility(View.VISIBLE);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 geometricProgressView.setVisibility(View.GONE);
@@ -97,10 +97,9 @@ public class LevelListActivity extends AppCompatActivity {
 
         //respond to menu item selection
         switch (item.getItemId()) {
-            case R.id.logout:
-            {
+            case R.id.logout: {
                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                if(firebaseAuth.getCurrentUser() == null){
+                if (firebaseAuth.getCurrentUser() == null) {
                     //closing this activity
                     finish();
                     //starting login activity
@@ -118,5 +117,4 @@ public class LevelListActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

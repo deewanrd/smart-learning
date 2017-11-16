@@ -12,7 +12,7 @@
         android:id="@+id/tv_question_no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_light"
+        android:background="@drawable/tv_border_question_no"
         android:text="@string/question_no"
         android:textSize="15sp"
         android:textStyle="bold" />

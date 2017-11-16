@@ -40,7 +40,7 @@ public class OnboardingActivity extends AppIntro {
     private void finishOnBoarding() {
         SharedPreferences preferences = getSharedPreferences("mypreferences", MODE_PRIVATE);
         preferences.edit().putBoolean("onboarding_complete", true).apply();
-        startActivity(new Intent(OnboardingActivity.this, MainActivity.class));
+        startActivity(new Intent(OnboardingActivity.this, TopicListActivity.class));
         finish();
     }
 

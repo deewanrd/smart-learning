@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".TopicListActivity"
             android:label="@string/main_activity_label" />
         <activity
             android:name=".LevelListActivity"
             android:label="@string/level_activity_label" />
         <activity android:name=".QuestionListActivity" />
         <activity android:name=".CustomDialog" />
-        <activity android:name=".sign_up" />
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".SplashActivity"

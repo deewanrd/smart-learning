@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class MainActivity extends AppCompatActivity {
+public class TopicListActivity extends AppCompatActivity {
 
-    final Logger logger = Logger.getLogger("MainActivity");
+    final Logger logger = Logger.getLogger("TopicListActivity");
     private DatabaseReference databaseReference;
     private List<Topic> topicsList;
     private ListView topicListView;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_topic_list);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("topics");
         topicsList = new ArrayList<>();
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Topic topic = topicsList.get(i);
-                Intent intent = new Intent(MainActivity.this, LevelListActivity.class);
+                Intent intent = new Intent(TopicListActivity.this, LevelListActivity.class);
                 intent.putExtra("Topic_ID", topic.getId());
                 intent.putExtra("Topic_Name", topic.getName());
                 startActivity(intent);
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         geometricProgressView.setVisibility(View.VISIBLE);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 geometricProgressView.setVisibility(View.GONE);
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     Topic currentTopic = topicKey.getValue(Topic.class);
                     topicsList.add(currentTopic);
                 }
-                TopicAdapter topicAdapter = new TopicAdapter(MainActivity.this, topicsList);
+                TopicAdapter topicAdapter = new TopicAdapter(TopicListActivity.this, topicsList);
                 topicListView.setAdapter(topicAdapter);
             }
 
@@ -89,10 +89,9 @@ public class MainActivity extends AppCompatActivity {
 
         //respond to menu item selection
         switch (item.getItemId()) {
-            case R.id.logout:
-            {
+            case R.id.logout: {
                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                if(firebaseAuth.getCurrentUser() == null){
+                if (firebaseAuth.getCurrentUser() == null) {
                     //closing this activity
                     finish();
                     //starting login activity

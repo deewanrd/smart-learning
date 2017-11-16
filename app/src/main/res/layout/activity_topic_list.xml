@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginVertical="10dp"
-    tools:context="com.rahuldeewan.smartlearning.MainActivity"
+    tools:context="com.rahuldeewan.smartlearning.TopicListActivity"
     tools:targetApi="o">
 
     <ListView

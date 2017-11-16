@@ -75,7 +75,7 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
     protected void onStart() {
         super.onStart();
         geometricProgressView.setVisibility(View.VISIBLE);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 count = 0;
@@ -187,10 +187,9 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
 
         //respond to menu item selection
         switch (item.getItemId()) {
-            case R.id.logout:
-            {
+            case R.id.logout: {
                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                if(firebaseAuth.getCurrentUser() == null){
+                if (firebaseAuth.getCurrentUser() == null) {
                     //closing this activity
                     finish();
                     //starting login activity

@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
                     startActivity(new Intent(SplashActivity.this, OnboardingActivity.class));
                     finish();
                 } else {
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 }
             }
         }, SPLASH_TIME_OUT);

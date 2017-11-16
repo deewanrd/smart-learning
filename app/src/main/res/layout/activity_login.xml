@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:hint="Enter email"
+            android:text="mridulgarg17@gmail.com"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -36,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:hint="Enter password"
+            android:text="123456789"
             android:inputType="textPassword" />
 
         <Button

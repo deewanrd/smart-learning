@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class sign_up extends AppCompatActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextEmail;
     private EditText editTextPassword;
@@ -39,7 +39,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
             finish();
 
             //and open profile activity
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), TopicListActivity.class));
         }
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
@@ -85,12 +85,12 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
                         //checking if success
                         if(task.isSuccessful()){
                             //display some message here
-                            Intent i = new Intent(sign_up.this,MainActivity.class);
+                            Intent i = new Intent(SignUpActivity.this,TopicListActivity.class);
                             startActivity(i);
-                            Toast.makeText(sign_up.this,"Successfully registered",Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
                         }else{
                             //display some message here
-                            Toast.makeText(sign_up.this,"Registration Error",Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpActivity.this,"Registration Error",Toast.LENGTH_LONG).show();
                         }
                         progressDialog.dismiss();
                     }
