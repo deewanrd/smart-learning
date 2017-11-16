@@ -210,4 +210,10 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        CustomDialog customDialog = new CustomDialog(QuestionListActivity.this, getString(R.string.submit), getString(R.string.warning_message) + count, getString(R.string.no), getString(R.string.yes));
+        customDialog.show();
+    }
 }
