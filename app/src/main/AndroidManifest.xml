@@ -19,6 +19,8 @@
             android:label="@string/level_activity_label" />
         <activity android:name=".QuestionListActivity" />
         <activity android:name=".CustomDialog" />
+        <activity android:name=".sign_up" />
+        <activity android:name=".LoginActivity" />
         <activity
             android:name=".SplashActivity"
             android:roundIcon="@mipmap/ic_launcher"
