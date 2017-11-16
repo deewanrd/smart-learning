@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +15,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.spark.submitbutton.SubmitButton;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonSignIn;
+    private SubmitButton buttonSignIn;
     private EditText editTextEmail;
 
     private EditText editTextPassword;
@@ -76,8 +76,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //if the email and password are not empty
         //displaying a progress dialog
 
-        progressDialog.setMessage("Registering Please Wait...");
-        progressDialog.show();
+//        progressDialog.setMessage("Registering Please Wait...");
+//        progressDialog.show();
 
         //logging in the user
         firebaseAuth.signInWithEmailAndPassword(email, password)

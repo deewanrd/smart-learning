@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,12 +15,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.spark.submitbutton.SubmitButton;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextEmail;
     private EditText editTextPassword;
-    public Button buttonSignup;
+    public SubmitButton buttonSignup;
     private ProgressDialog progressDialog;
     private TextView textViewSignin;
     private FirebaseAuth firebaseAuth;
@@ -33,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         firebaseAuth = FirebaseAuth.getInstance();
         //initializing views
-        if(firebaseAuth.getCurrentUser() != null){
+        if (firebaseAuth.getCurrentUser() != null) {
             //that means user is already logged in
             //so close this activity
             finish();
@@ -42,10 +42,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             startActivity(new Intent(getApplicationContext(), TopicListActivity.class));
         }
 
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        textViewSignin = (TextView) findViewById(R.id.textViewSignin);
-        buttonSignup = (Button) findViewById(R.id.buttonSignup);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        textViewSignin = findViewById(R.id.textViewSignin);
+        buttonSignup = findViewById(R.id.buttonSignup);
 
         progressDialog = new ProgressDialog(this);
         //attaching listener to button
@@ -54,20 +54,20 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private void registerUser(){
+    private void registerUser() {
 
         //getting email and password from edit texts
         String email = editTextEmail.getText().toString().trim();
-        String password  = editTextPassword.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
 
         //checking if email and passwords are empty
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Please enter email",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();
             return;
         }
 
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(this,"Please enter password",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -83,14 +83,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //checking if success
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             //display some message here
-                            Intent i = new Intent(SignUpActivity.this,TopicListActivity.class);
+                            Intent i = new Intent(SignUpActivity.this, TopicListActivity.class);
                             startActivity(i);
-                            Toast.makeText(SignUpActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
-                        }else{
+                            Toast.makeText(SignUpActivity.this, "Successfully registered", Toast.LENGTH_LONG).show();
+                        } else {
                             //display some message here
-                            Toast.makeText(SignUpActivity.this,"Registration Error",Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpActivity.this, "Registration Error", Toast.LENGTH_LONG).show();
                         }
                         progressDialog.dismiss();
                     }
@@ -101,11 +101,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         //calling register method on click
-        if(view == buttonSignup){
+        if (view == buttonSignup) {
             registerUser();
         }
 
-        if(view == textViewSignin){
+        if (view == textViewSignin) {
             //open login activity when user taps on the already registered textview
             startActivity(new Intent(this, LoginActivity.class));
         }

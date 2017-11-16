@@ -1,46 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:orientation="vertical">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="15dp"
+        android:text="@string/user_signup"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        tools:targetApi="o" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_marginVertical="10dp"
+        android:padding="5dp"
+        tools:targetApi="o">
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:hint="Enter email"
-            android:inputType="textEmailAddress" />
+            android:hint="@string/hint_name"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:text="mridulgarg17@gmail.com" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_layout_name"
+        android:layout_marginVertical="10dp"
+        android:padding="5dp"
+        tools:targetApi="o">
 
         <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:hint="Enter password"
-            android:inputType="textPassword" />
+            android:hint="@string/hint_password"
+            android:inputType="textPassword"
+            android:text="123456789" />
+    </android.support.design.widget.TextInputLayout>
 
-        <Button
-            android:id="@+id/buttonSignup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="Signup" />
+    <com.spark.submitbutton.SubmitButton
+        android:id="@+id/buttonSignup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/input_layout_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="10dp"
+        android:text="@string/register"
+        android:textColor="@color/black"
+        app:sub_btn_background="@color/login"
+        app:sub_btn_duration="3000"
+        app:sub_btn_line_color="@color/colorPrimaryDark"
+        app:sub_btn_ripple_color="@color/question_no"
+        app:sub_btn_tick_color="@color/question_no"
+        tools:targetApi="o" />
 
-        <TextView
-            android:id="@+id/textViewSignin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="Already Registered? Signin Here"
-            android:textAlignment="center" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textViewSignin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSignup"
+        android:layout_margin="15dp"
+        android:text="@string/already_have_an_account"
+        android:textAlignment="center" />
 
 </RelativeLayout>
