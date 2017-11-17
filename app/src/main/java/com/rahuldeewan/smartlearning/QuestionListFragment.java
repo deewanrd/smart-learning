@@ -29,6 +29,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private TextView tvOptionB;
     private TextView tvOptionC;
     private TextView tvOptionD;
+    private View rootView;
     private static Logger logger = Logger.getLogger("QuestionListFragment");
     //array to keep check visit to question
     boolean[] arr = new boolean[size];
@@ -56,26 +57,37 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_question_list, container, false);
-        TextView tvQuestionNo = rootView.findViewById(R.id.tv_question_no);
-        TextView tvQuestion = rootView.findViewById(R.id.tv_question);
-        tvOptionA = rootView.findViewById(R.id.tv_option_a);
-        tvOptionB = rootView.findViewById(R.id.tv_option_b);
-        tvOptionC = rootView.findViewById(R.id.tv_option_c);
-        tvOptionD = rootView.findViewById(R.id.tv_option_d);
+        if(rootView==null) {
+            rootView = inflater.inflate(R.layout.fragment_question_list, container, false);
+            TextView tvQuestionNo = rootView.findViewById(R.id.tv_question_no);
+            TextView tvQuestion = rootView.findViewById(R.id.tv_question);
+            tvOptionA = rootView.findViewById(R.id.tv_option_a);
+            tvOptionB = rootView.findViewById(R.id.tv_option_b);
+            tvOptionC = rootView.findViewById(R.id.tv_option_c);
+            tvOptionD = rootView.findViewById(R.id.tv_option_d);
 
-        tvOptionA.setOnClickListener(this);
-        tvOptionB.setOnClickListener(this);
-        tvOptionC.setOnClickListener(this);
-        tvOptionD.setOnClickListener(this);
+            tvOptionA.setOnClickListener(this);
+            tvOptionB.setOnClickListener(this);
+            tvOptionC.setOnClickListener(this);
+            tvOptionD.setOnClickListener(this);
 
-        tvQuestionNo.setText(getArguments().getString(QUESTION_NO));
-        tvQuestion.setText(getArguments().getString(QUESTION));
-        tvOptionA.setText(getArguments().getString(OPTIONA));
-        tvOptionB.setText(getArguments().getString(OPTIONB));
-        tvOptionC.setText(getArguments().getString(OPTIONC));
-        tvOptionD.setText(getArguments().getString(OPTIOND));
+            tvQuestionNo.setText(getArguments().getString(QUESTION_NO));
+            tvQuestion.setText(getArguments().getString(QUESTION));
+            tvOptionA.setText(getArguments().getString(OPTIONA));
+            tvOptionB.setText(getArguments().getString(OPTIONB));
+            tvOptionC.setText(getArguments().getString(OPTIONC));
+            tvOptionD.setText(getArguments().getString(OPTIOND));
+        }
+
         return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (rootView.getParent() != null) {
+            ((ViewGroup) rootView.getParent()).removeView(rootView);
+        }
+        super.onDestroyView();
     }
 
     @Override

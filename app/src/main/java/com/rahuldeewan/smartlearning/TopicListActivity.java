@@ -125,6 +125,10 @@ public class TopicListActivity extends AppCompatActivity {
                 alertDialog.show();
             }
             return true;
+
+            case R.id.Add_question:
+                startActivity(new Intent(TopicListActivity.this, Add_Question.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

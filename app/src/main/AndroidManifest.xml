@@ -32,9 +32,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.rahuldeewan.smartlearning.OnboardingActivity"
+            android:name=".OnboardingActivity"
             android:label="@string/app_intro"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Add_Question"></activity>
     </application>
 
 </manifest>
