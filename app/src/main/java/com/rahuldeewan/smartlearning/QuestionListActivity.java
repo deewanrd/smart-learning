@@ -43,14 +43,16 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
     String hint = "";
     String solution = "";
     CustomDialog customDialog;
+    static String level_name;
+    static String topic_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_list);
         Intent i = getIntent();
-        String level_name = i.getStringExtra("Level_name");
-        String topic_name = i.getStringExtra("Topic_name");
+         level_name = i.getStringExtra("Level_name");
+         topic_name = i.getStringExtra("Topic_name");
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("questions").child(topic_name).child(level_name);
 
         questionList = new ArrayList<>();
@@ -182,4 +184,6 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
         CustomDialog customDialog = new CustomDialog(QuestionListActivity.this, getString(R.string.submit), getString(R.string.warning_message) + count, getString(R.string.no), getString(R.string.yes));
         customDialog.show();
     }
+
+
 }

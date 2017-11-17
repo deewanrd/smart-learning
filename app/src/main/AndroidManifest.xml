@@ -23,8 +23,8 @@
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".SplashActivity"
-            android:roundIcon="@mipmap/ic_launcher"
             android:noHistory="true"
+            android:roundIcon="@mipmap/ic_launcher"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,8 @@
             android:name=".OnboardingActivity"
             android:label="@string/app_intro"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Add_Question"></activity>
+        <activity android:name=".Add_Question" />
+        <activity android:name=".Profile"></activity>
     </application>
 
 </manifest>

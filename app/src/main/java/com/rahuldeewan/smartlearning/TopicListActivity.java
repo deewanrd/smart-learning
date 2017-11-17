@@ -128,6 +128,10 @@ public class TopicListActivity extends AppCompatActivity {
             case R.id.Add_question:
                 startActivity(new Intent(TopicListActivity.this, Add_Question.class));
                 return true;
+
+            case R.id.profile:
+                startActivity(new Intent(TopicListActivity.this,Profile.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

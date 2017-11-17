@@ -9,6 +9,15 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import static com.rahuldeewan.smartlearning.QuestionListActivity.count;
+import static com.rahuldeewan.smartlearning.QuestionListActivity.level_name;
+import static com.rahuldeewan.smartlearning.QuestionListActivity.topic_name;
+
 public class CustomDialog extends Dialog {
 
     private Activity activity;
@@ -64,9 +73,32 @@ public class CustomDialog extends Dialog {
             btnSecondary.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    submit();
                     activity.finish();
                 }
             });
         }
+    }
+
+    public void submit(){
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        String uid;
+        String r_id;
+        if(user!=null){
+            uid = user.getUid();
+        }
+        FirebaseDatabase mFirebaseInstance;
+        DatabaseReference mFirebaseDatabase;
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+
+        mFirebaseDatabase = mFirebaseInstance.getReference("Result").child(user.getUid());
+
+        r_id = mFirebaseDatabase.push().getKey();
+        long l_count = (long)count;
+
+        Result r = new Result(r_id,l_count,topic_name,level_name);
+        mFirebaseDatabase.child(r_id).setValue(r);
+
     }
 }

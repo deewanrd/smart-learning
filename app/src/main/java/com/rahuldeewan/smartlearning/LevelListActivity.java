@@ -43,6 +43,7 @@ public class LevelListActivity extends AppCompatActivity {
         geometricProgressView = findViewById(R.id.geometric_progress_view);
 
         geometricProgressView.setVisibility(View.VISIBLE);
+
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
