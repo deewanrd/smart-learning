@@ -21,7 +21,6 @@ import java.util.logging.Logger;
 
 public class LevelListActivity extends AppCompatActivity {
 
-    private DatabaseReference databaseReference;
     private List<Level> levelList;
     private LevelAdapter levelAdapter;
     private ListView levelListView;
@@ -38,27 +37,11 @@ public class LevelListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String topicName = intent.getStringExtra("Topic_Name");
         logger.info(topicName);
-        databaseReference = FirebaseDatabase.getInstance().getReference("levels");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("levels");
         levelList = new ArrayList<>();
         levelListView = findViewById(R.id.listview_level);
         geometricProgressView = findViewById(R.id.geometric_progress_view);
 
-        levelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Level level = levelList.get(i);
-                Intent in = new Intent(LevelListActivity.this, QuestionListActivity.class);
-                in.putExtra("Level_Id", level.getID());
-                in.putExtra("Level_name", level.getName());
-                in.putExtra("Topic_name", topicName);
-                startActivity(in);
-            }
-        });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
         geometricProgressView.setVisibility(View.VISIBLE);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -79,7 +62,16 @@ public class LevelListActivity extends AppCompatActivity {
 
             }
         });
+        levelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Level level = levelList.get(i);
+                Intent in = new Intent(LevelListActivity.this, QuestionListActivity.class);
+                in.putExtra("Level_Id", level.getID());
+                in.putExtra("Level_name", level.getName());
+                in.putExtra("Topic_name", topicName);
+                startActivity(in);
+            }
+        });
     }
-
-
 }

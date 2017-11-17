@@ -31,7 +31,6 @@ import java.util.logging.Logger;
 
 public class QuestionListActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DatabaseReference databaseReference;
     private List<Question> questionList;
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
@@ -52,7 +51,7 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
         Intent i = getIntent();
         String level_name = i.getStringExtra("Level_name");
         String topic_name = i.getStringExtra("Topic_name");
-        databaseReference = FirebaseDatabase.getInstance().getReference("questions").child(topic_name).child(level_name);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("questions").child(topic_name).child(level_name);
 
         questionList = new ArrayList<>();
         logger = Logger.getLogger("QuestionListActivity");
@@ -66,11 +65,7 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
         imageViewSolution.setOnClickListener(this);
         imageViewHint.setOnClickListener(this);
         imageViewSubmit.setOnClickListener(this);
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
         geometricProgressView.setVisibility(View.VISIBLE);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -125,6 +120,7 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
 
             @Override
             public void onPageSelected(int position) {
+                logger.info("Page Selected" + getFragmentManager().findFragmentById(position));
                 spinnerQuestion.setSelection(position);
                 hint = questionList.get(position).getHint();
                 solution = questionList.get(position).getSolution();
@@ -135,6 +131,13 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
 
             }
         });
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -174,5 +177,9 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        CustomDialog customDialog = new CustomDialog(QuestionListActivity.this, getString(R.string.submit), getString(R.string.warning_message) + count, getString(R.string.no), getString(R.string.yes));
+        customDialog.show();
+    }
 }
