@@ -32,7 +32,6 @@ import java.util.logging.Logger;
 public class TopicListActivity extends AppCompatActivity {
 
     final Logger logger = Logger.getLogger("TopicListActivity");
-    private DatabaseReference databaseReference;
     private List<Topic> topicsList;
     private ListView topicListView;
     GeometricProgressView geometricProgressView;
@@ -44,25 +43,11 @@ public class TopicListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_list);
         relativeLayout = findViewById(R.id.relative_layout);
-        databaseReference = FirebaseDatabase.getInstance().getReference("topics");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("topics");
         topicsList = new ArrayList<>();
         topicListView = findViewById(R.id.listview_topic);
         geometricProgressView = findViewById(R.id.geometric_progress_view);
-        topicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Topic topic = topicsList.get(i);
-                Intent intent = new Intent(TopicListActivity.this, LevelListActivity.class);
-                intent.putExtra("Topic_ID", topic.getId());
-                intent.putExtra("Topic_Name", topic.getName());
-                startActivity(intent);
-            }
-        });
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
         geometricProgressView.setVisibility(View.VISIBLE);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -80,6 +65,16 @@ public class TopicListActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+        topicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Topic topic = topicsList.get(i);
+                Intent intent = new Intent(TopicListActivity.this, LevelListActivity.class);
+                intent.putExtra("Topic_ID", topic.getId());
+                intent.putExtra("Topic_Name", topic.getName());
+                startActivity(intent);
             }
         });
     }
