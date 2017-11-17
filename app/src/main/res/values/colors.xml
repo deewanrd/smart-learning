@@ -9,4 +9,6 @@
     <color name="pink">#E91E63</color>
     <color name="question_no">#FFCDD2</color>
     <color name="login">#FF5252</color>
+    <color name="black_transparent">#14000000</color>
+    <color name="blue_grey">#607D8B</color>
 </resources>
