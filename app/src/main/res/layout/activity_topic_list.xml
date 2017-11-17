@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginVertical="10dp"
+    android:id="@+id/relative_layout"
     tools:context="com.rahuldeewan.smartlearning.TopicListActivity"
     tools:targetApi="o">
 

@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,17 +36,18 @@ public class TopicListActivity extends AppCompatActivity {
     private List<Topic> topicsList;
     private ListView topicListView;
     GeometricProgressView geometricProgressView;
+    private boolean exit = false;
+    RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_list);
-
+        relativeLayout = findViewById(R.id.relative_layout);
         databaseReference = FirebaseDatabase.getInstance().getReference("topics");
         topicsList = new ArrayList<>();
         topicListView = findViewById(R.id.listview_topic);
         geometricProgressView = findViewById(R.id.geometric_progress_view);
-
         topicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -100,7 +104,7 @@ public class TopicListActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
                                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                                if(firebaseAuth.getCurrentUser() == null){
+                                if (firebaseAuth.getCurrentUser() == null) {
                                     //closing this activity
                                     finish();
                                     //starting login activity
@@ -114,7 +118,7 @@ public class TopicListActivity extends AppCompatActivity {
                             }
                         });
 
-                alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -128,5 +132,21 @@ public class TopicListActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finish();
+            return;
+        }
+        this.exit = true;
+        Snackbar.make(relativeLayout, "Press Back again to exit", Snackbar.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                exit = false;
+            }
+        }, 2000);
     }
 }
