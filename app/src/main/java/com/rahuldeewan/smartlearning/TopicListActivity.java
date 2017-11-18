@@ -87,9 +87,6 @@ public class TopicListActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-
-
-        //respond to menu item selection
         switch (item.getItemId()) {
             case R.id.logout: {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -100,9 +97,7 @@ public class TopicListActivity extends AppCompatActivity {
                             public void onClick(DialogInterface arg0, int arg1) {
                                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                                 if (firebaseAuth.getCurrentUser() == null) {
-                                    //closing this activity
                                     finish();
-                                    //starting login activity
                                     startActivity(new Intent(TopicListActivity.this, LoginActivity.class));
                                 }
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -126,11 +121,11 @@ public class TopicListActivity extends AppCompatActivity {
             return true;
 
             case R.id.Add_question:
-                startActivity(new Intent(TopicListActivity.this, Add_Question.class));
+                startActivity(new Intent(TopicListActivity.this, AddQuestionActivity.class));
                 return true;
 
             case R.id.profile:
-                startActivity(new Intent(TopicListActivity.this,Profile.class));
+                startActivity(new Intent(TopicListActivity.this, ProfileActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

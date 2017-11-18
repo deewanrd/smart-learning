@@ -14,14 +14,14 @@ public class Result {
     private String Topic;
     private String level;
 
+    public Result() {
+    }
 
-
-    public Result(){}
-    public Result(Profile profile, List<Result> result){
+    public Result(ProfileActivity profileActivity, List<Result> result) {
 
     }
 
-    public Result(String id, long score, String topic, String level) {
+    Result(String id, long score, String topic, String level) {
         this.id = id;
         Score = score;
         Topic = topic;
@@ -29,7 +29,6 @@ public class Result {
     }
 
     public String getId() {
-
         return id;
     }
 

@@ -20,10 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class Profile extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     private List<Result> result;
-    FirebaseAuth firebaseAuth ;
     String user_name;
     GeometricProgressView geometricProgressView;
     private ListView resultView;
@@ -34,10 +33,9 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if(user!=null){
+        if (user != null) {
             user_name = user.getDisplayName();
             uid = user.getUid();
         }
@@ -48,23 +46,19 @@ public class Profile extends AppCompatActivity {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Result").child(user.getUid());
         result = new ArrayList<>();
         resultView = findViewById(R.id.listview_result);
-        logger=Logger.getLogger("Profile");
+        logger = Logger.getLogger("ProfileActivity");
         geometricProgressView = findViewById(R.id.geometric_progress_view);
         geometricProgressView.setVisibility(View.VISIBLE);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                logger.info(dataSnapshot+"123456789");
                 result.clear();
                 geometricProgressView.setVisibility(View.GONE);
                 for (DataSnapshot r : dataSnapshot.getChildren()) {
-                    logger.info(r+"qwertyuop");
                     Result re = r.getValue(Result.class);
                     result.add(re);
                 }
-                logger.info(result.get(0)+"qwerty");
-
-                ResultAdapter result_adapter = new ResultAdapter(Profile.this,result);
+                ResultAdapter result_adapter = new ResultAdapter(ProfileActivity.this, result);
                 resultView.setAdapter(result_adapter);
             }
 
@@ -73,6 +67,5 @@ public class Profile extends AppCompatActivity {
 
             }
         });
-
     }
 }

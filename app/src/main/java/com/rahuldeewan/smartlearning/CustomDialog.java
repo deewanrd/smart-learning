@@ -29,7 +29,7 @@ public class CustomDialog extends Dialog {
 
     CustomDialog(@NonNull Activity activity, String title, String message, String subMessage) {
         super(activity);
-        this.activity=activity;
+        this.activity = activity;
         this.title = title;
         this.message = message;
         this.subMessageYes = subMessage;
@@ -38,7 +38,7 @@ public class CustomDialog extends Dialog {
 
     CustomDialog(@NonNull Activity activity, String title, String message, String yes, String no) {
         super(activity);
-        this.activity=activity;
+        this.activity = activity;
         this.title = title;
         this.message = message;
         this.subMessageYes = yes;
@@ -80,25 +80,17 @@ public class CustomDialog extends Dialog {
         }
     }
 
-    public void submit(){
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+    private void submit() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid;
         String r_id;
-        if(user!=null){
+        if (user != null) {
             uid = user.getUid();
         }
-        FirebaseDatabase mFirebaseInstance;
-        DatabaseReference mFirebaseDatabase;
-        mFirebaseInstance = FirebaseDatabase.getInstance();
-
-        mFirebaseDatabase = mFirebaseInstance.getReference("Result").child(user.getUid());
-
-        r_id = mFirebaseDatabase.push().getKey();
-        long l_count = (long)count;
-
-        Result r = new Result(r_id,l_count,topic_name,level_name);
-        mFirebaseDatabase.child(r_id).setValue(r);
-
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Result").child(user.getUid());
+        r_id = databaseReference.push().getKey();
+        long l_count = (long) count;
+        Result r = new Result(r_id, l_count, topic_name, level_name);
+        databaseReference.child(r_id).setValue(r);
     }
 }

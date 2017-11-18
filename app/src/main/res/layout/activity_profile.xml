@@ -2,27 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_marginVertical="10dp"
-    android:id="@+id/relative_layout"
+    android:orientation="vertical"
     tools:context="com.rahuldeewan.smartlearning.TopicListActivity"
     tools:targetApi="o">
 
     <LinearLayout
+        android:id="@+id/prof_id"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/prof_id">
+        android:layout_height="wrap_content">
 
         <com.an.customfontview.CustomTextView
             android:id="@+id/user_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:padding="10dp"
-            android:text="User ID :"
-            android:textSize="20dp"
+            android:text="@string/user_id"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:textFontPath="fonts/CaviarDreams.ttf"
             tools:ignore="RelativeOverlap" />
@@ -31,9 +30,8 @@
             android:id="@+id/tv_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:padding="10dp"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:textFontPath="fonts/CaviarDreams.ttf"
             tools:ignore="RelativeOverlap" />
@@ -41,19 +39,18 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/prof_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/prof_id"
-        android:id="@+id/prof_email">
+        android:layout_below="@+id/prof_id">
 
         <com.an.customfontview.CustomTextView
             android:id="@+id/email_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:padding="10dp"
-            android:text="Email Id :"
-            android:textSize="20dp"
+            android:text="@string/email_id"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:textFontPath="fonts/CaviarDreams.ttf"
             tools:ignore="RelativeOverlap" />
@@ -62,19 +59,19 @@
             android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:padding="10dp"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:textFontPath="fonts/CaviarDreams.ttf"
             tools:ignore="RelativeOverlap" />
     </LinearLayout>
+
     <ListView
         android:id="@+id/listview_result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="5dp"
         android:layout_below="@+id/prof_email"
+        android:layout_marginHorizontal="5dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"
         tools:targetApi="o" />
