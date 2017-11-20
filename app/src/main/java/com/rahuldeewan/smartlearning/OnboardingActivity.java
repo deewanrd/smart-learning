@@ -53,7 +53,7 @@ public class OnboardingActivity extends AhoyOnboarderActivity {
     private void finishOnBoarding() {
         SharedPreferences preferences = getSharedPreferences("mypreferences", MODE_PRIVATE);
         preferences.edit().putBoolean("onboarding_complete", true).apply();
-        startActivity(new Intent(OnboardingActivity.this, TopicListActivity.class));
+        startActivity(new Intent(OnboardingActivity.this, LoginActivity.class));
         finish();
     }
 }

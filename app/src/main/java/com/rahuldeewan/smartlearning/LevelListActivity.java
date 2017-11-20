@@ -68,7 +68,6 @@ public class LevelListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Level level = levelList.get(i);
                 Intent in = new Intent(LevelListActivity.this, QuestionListActivity.class);
-                in.putExtra("Level_Id", level.getID());
                 in.putExtra("Level_name", level.getName());
                 in.putExtra("Topic_name", topicName);
                 startActivity(in);

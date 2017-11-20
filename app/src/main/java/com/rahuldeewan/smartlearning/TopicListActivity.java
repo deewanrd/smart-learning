@@ -72,7 +72,6 @@ public class TopicListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Topic topic = topicsList.get(i);
                 Intent intent = new Intent(TopicListActivity.this, LevelListActivity.class);
-                intent.putExtra("Topic_ID", topic.getId());
                 intent.putExtra("Topic_Name", topic.getName());
                 startActivity(intent);
             }
