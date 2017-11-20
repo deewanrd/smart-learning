@@ -10,5 +10,5 @@
     app:registerIcon="@drawable/ic_person_add_white_24dp"
     app:registerPasswordHint="Password"
     app:registerRepeatPasswordHint="Confirm Password"
-    app:registerTextColor="@color/colorAccent"
+    app:registerTextColor="@color/black"
     app:registerTitle="Join us" />
