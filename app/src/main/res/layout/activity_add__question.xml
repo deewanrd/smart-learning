@@ -1,166 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.rahuldeewan.smartlearning.AddQuestionActivity">
+        android:layout_height="wrap_content"
+        android:padding="5dp">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_choose_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/choose_topic"
+            android:textColor="@color/blue_grey"
+            android:textStyle="bold" />
+
+        <org.angmarch.views.NiceSpinner
+            android:id="@+id/nice_spinner_topic_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_choose_topic"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/question_no"
+            android:padding="5dp"
+            app:arrowTint="@color/colorAccent"
+            app:dropDownListPaddingBottom="5dp"
+            app:textTint="@color/cyan"
+            tools:targetApi="lollipop" />
+
+        <TextView
+            android:id="@+id/tv_choose_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/choose_level"
+            android:textColor="@color/blue_grey"
+            android:textStyle="bold" />
+
+        <org.angmarch.views.NiceSpinner
+            android:id="@+id/nice_spinner_level_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/tv_choose_level"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/question_no"
+            android:padding="5dp"
+            app:arrowTint="@color/colorAccent"
+            app:dropDownListPaddingBottom="5dp"
+            app:textTint="@color/cyan"
+            tools:targetApi="lollipop" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@id/nice_spinner_topic_name">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/csubject"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Subject"
-                    android:inputType="textCapWords"
-                    android:maxLines="1" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/clevel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Level"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/cquestion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Question"
-                    android:inputType="text"
-                    android:maxLines="2" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/coptionA"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Option A"
-                    android:inputType="text"
-                    android:maxLines="2" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/coptionB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Option B"
-                    android:inputType="text"
-                    android:maxLines="2" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/coptionC"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Option C"
-                    android:inputType="text"
-                    android:maxLines="2" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/coptionD"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Option D"
-                    android:inputType="text"
-                    android:maxLines="2" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/canswer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Answer"
-                    android:inputType="text"
-                    android:maxLines="2" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/chint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Hint"
-                    android:inputType="text"
-                    android:maxLines="2" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/csolution"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Solution"
-                    android:inputType="text"
-                    android:maxLines="2" />
-            </android.support.design.widget.TextInputLayout>
-
-            <Button
-                android:id="@+id/btn_save"
-                style="?android:textAppearanceSmall"
+            <EditText
+                android:id="@+id/cquestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="Save"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
+                android:hint="Question"
+                android:inputType="text"
+                android:maxLines="2" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_1">
+
+            <EditText
+                android:id="@+id/coptionA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Option A"
+                android:inputType="text"
+                android:maxLines="2" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_2">
+
+            <EditText
+                android:id="@+id/coptionB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Option B"
+                android:inputType="text"
+                android:maxLines="2" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_3">
+
+            <EditText
+                android:id="@+id/coptionC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Option C"
+                android:inputType="text"
+                android:maxLines="2" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/til_4">
+
+            <EditText
+                android:id="@+id/coptionD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Option D"
+                android:inputType="text"
+                android:maxLines="2" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/til_5">
+
+            <EditText
+                android:id="@+id/canswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Answer"
+                android:inputType="text"
+                android:maxLines="2" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/til_6">
+
+            <EditText
+                android:id="@+id/chint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hint"
+                android:inputType="text"
+                android:maxLines="2" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/til_7">
+
+            <EditText
+                android:id="@+id/csolution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Solution"
+                android:inputType="text"
+                android:maxLines="2" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_save"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_8"
+            android:background="@color/colorPrimary"
+            android:text="Save"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
 </ScrollView>
