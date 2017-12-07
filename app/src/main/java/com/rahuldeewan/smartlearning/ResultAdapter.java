@@ -40,6 +40,8 @@ public class ResultAdapter extends ArrayAdapter{
         TextView tvtopic = listViewItem.findViewById(R.id.tv_topic_name);
         TextView tvlevel=listViewItem.findViewById(R.id.tv_level);
         TextView tvScore = listViewItem.findViewById(R.id.tv_Score);
+        TextView tvdate = listViewItem.findViewById(R.id.tv_date);
+        tvdate.setText("Date : "+currentResult.getDate());
         tvtopic.setText("Topic : "+currentResult.getTopic());
         tvlevel.setText("Level : "+currentResult.getLevel());
         tvScore.setText("Score : "+currentResult.getScore());

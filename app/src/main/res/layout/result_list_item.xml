@@ -100,6 +100,33 @@
             tools:ignore="RelativeOverlap" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Score"
+        android:id="@+id/Date">
 
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/date_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:textFontPath="fonts/CaviarDreams.ttf"
+            tools:ignore="RelativeOverlap" />
+
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:textFontPath="fonts/CaviarDreams.ttf"
+            tools:ignore="RelativeOverlap" />
+    </LinearLayout>
 
 </RelativeLayout>
