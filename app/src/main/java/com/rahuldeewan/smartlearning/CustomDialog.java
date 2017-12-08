@@ -14,6 +14,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static com.rahuldeewan.smartlearning.QuestionListActivity.count;
 import static com.rahuldeewan.smartlearning.QuestionListActivity.level_name;
 import static com.rahuldeewan.smartlearning.QuestionListActivity.topic_name;
@@ -82,15 +85,24 @@ public class CustomDialog extends Dialog {
 
     private void submit() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //String date = DateFormat.getDateTimeInstance().format(new Date());
+        Date today;
+        String date;
+        SimpleDateFormat formatter;
+
+        formatter = new SimpleDateFormat("d MMM yy");
+        today= new Date();
+        date = formatter.format(today);
         String uid;
         String r_id;
+
         if (user != null) {
             uid = user.getUid();
         }
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Result").child(user.getUid());
         r_id = databaseReference.push().getKey();
         long l_count = (long) count;
-        Result r = new Result(r_id, l_count, topic_name, level_name);
+        Result r = new Result(r_id, l_count, topic_name, level_name,date);
         databaseReference.child(r_id).setValue(r);
     }
 }

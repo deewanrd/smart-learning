@@ -13,6 +13,7 @@ public class Result {
     private long Score;
     private String Topic;
     private String level;
+    private String date;
 
     public Result() {
     }
@@ -21,11 +22,20 @@ public class Result {
 
     }
 
-    Result(String id, long score, String topic, String level) {
+    Result(String id, long score, String topic, String level,String date) {
         this.id = id;
         Score = score;
         Topic = topic;
         this.level = level;
+        this.date=date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getId() {
