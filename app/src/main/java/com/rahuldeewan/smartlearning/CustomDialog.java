@@ -1,5 +1,6 @@
 package com.rahuldeewan.smartlearning;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -83,6 +84,7 @@ public class CustomDialog extends Dialog {
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     private void submit() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //String date = DateFormat.getDateTimeInstance().format(new Date());

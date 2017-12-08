@@ -2,9 +2,12 @@ package com.rahuldeewan.smartlearning;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,11 +22,14 @@ import shem.com.materiallogin.MaterialLoginView;
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
+    private boolean exit = false;
+    FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        frameLayout = findViewById(R.id.frame_layout);
 
         final MaterialLoginView loginView = findViewById(R.id.login);
 
@@ -33,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             //close this activity
             finish();
             //opening profile activity
-            startActivity(new Intent(getApplicationContext(), TopicListActivity.class));
+            startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
         }
 
         ((DefaultLoginView) loginView.getLoginView()).setListener(new DefaultLoginView.DefaultLoginViewListener() {
@@ -62,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     //start the profile activity
                                     finish();
-                                    startActivity(new Intent(getApplicationContext(), TopicListActivity.class));
+                                    startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Please enter correct details", Toast.LENGTH_LONG).show();
                                 }
@@ -98,14 +104,9 @@ public class LoginActivity extends AppCompatActivity {
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                //checking if success
                                 if (task.isSuccessful()) {
-                                    //display some message here
                                     startActivity(new Intent(getApplicationContext(), TopicListActivity.class));
-
-                                    Toast.makeText(LoginActivity.this, "Successfully registered", Toast.LENGTH_LONG).show();
                                 } else {
-                                    //display some message here
                                     Toast.makeText(LoginActivity.this, "Registration Error", Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -113,5 +114,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finish();
+            return;
+        }
+        this.exit = true;
+        Snackbar.make(frameLayout, "Press Back again to exit", Snackbar.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                exit = false;
+            }
+        }, 2000);
     }
 }

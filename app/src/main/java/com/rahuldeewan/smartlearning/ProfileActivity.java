@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import net.bohush.geometricprogressview.GeometricProgressView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -58,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
                     Result re = r.getValue(Result.class);
                     result.add(re);
                 }
+                Collections.reverse(result);
                 ResultAdapter result_adapter = new ResultAdapter(ProfileActivity.this, result);
                 resultView.setAdapter(result_adapter);
             }

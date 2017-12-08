@@ -30,7 +30,7 @@ public class Result {
         this.date=date;
     }
 
-    public String getDate() {
+    String getDate() {
         return date;
     }
 
