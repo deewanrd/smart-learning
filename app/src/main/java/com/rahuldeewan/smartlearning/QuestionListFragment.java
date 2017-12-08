@@ -57,7 +57,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if(rootView==null) {
+        if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_question_list, container, false);
             TextView tvQuestionNo = rootView.findViewById(R.id.tv_question_no);
             TextView tvQuestion = rootView.findViewById(R.id.tv_question);
@@ -95,7 +95,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         if (view.getId() == R.id.tv_option_a) {
             logger.info(getArguments().getString(ANSWER) + "ANSWER");
             if (getArguments().getString(ANSWER).equalsIgnoreCase("A")) {
-                tvOptionA.setBackgroundColor(Color.GREEN);
+                tvOptionA.setBackgroundColor(Color.rgb(0, 100, 0));
                 if (!arr[i]) {
                     count++;
                 }
@@ -112,7 +112,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         }
         if (view.getId() == R.id.tv_option_b) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("B")) {
-                tvOptionB.setBackgroundColor(Color.GREEN);
+                tvOptionB.setBackgroundColor(Color.rgb(0, 100, 0));
                 if (!arr[i]) {
                     count++;
                 }
@@ -129,7 +129,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         }
         if (view.getId() == R.id.tv_option_c) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("C")) {
-                tvOptionC.setBackgroundColor(Color.GREEN);
+                tvOptionC.setBackgroundColor(Color.rgb(0, 100, 0));
                 if (!arr[i]) {
                     count++;
                 }
@@ -146,7 +146,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         }
         if (view.getId() == R.id.tv_option_d) {
             if (getArguments().getString(ANSWER).equalsIgnoreCase("D")) {
-                tvOptionD.setBackgroundColor(Color.GREEN);
+                tvOptionD.setBackgroundColor(Color.rgb(0, 100, 0));
                 if (!arr[i]) {
                     count++;
                 }

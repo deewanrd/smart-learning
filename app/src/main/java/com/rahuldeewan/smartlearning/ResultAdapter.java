@@ -14,10 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Mridul on 17-11-2017.
+ * Created by Mridul
+ * on 17-11-2017.
  */
 
-public class ResultAdapter extends ArrayAdapter{
+public class ResultAdapter extends ArrayAdapter {
     private Activity context;
     private List<Result> resultList = new ArrayList<>();
 
@@ -37,14 +38,14 @@ public class ResultAdapter extends ArrayAdapter{
         }
         Result currentResult = resultList.get(position);
 
-        TextView tvtopic = listViewItem.findViewById(R.id.tv_topic_name);
-        TextView tvlevel=listViewItem.findViewById(R.id.tv_level);
-        TextView tvScore = listViewItem.findViewById(R.id.tv_Score);
-        TextView tvdate = listViewItem.findViewById(R.id.tv_date);
-        tvdate.setText("Date : "+currentResult.getDate());
-        tvtopic.setText("Topic : "+currentResult.getTopic());
-        tvlevel.setText("Level : "+currentResult.getLevel());
-        tvScore.setText("Score : "+currentResult.getScore());
+        TextView tvTopicName = listViewItem.findViewById(R.id.tv_topic_name);
+        TextView tvDate = listViewItem.findViewById(R.id.tv_date);
+        TextView tvLevel = listViewItem.findViewById(R.id.tv_level);
+        TextView tvScore = listViewItem.findViewById(R.id.tv_score_value);
+        tvTopicName.setText(currentResult.getTopic());
+        tvDate.setText(currentResult.getDate());
+        tvLevel.setText(currentResult.getLevel());
+        tvScore.setText("" + currentResult.getScore());
         return listViewItem;
     }
 }

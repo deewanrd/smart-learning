@@ -118,7 +118,6 @@ public class HomePageActivity extends AppCompatActivity {
         Runnable mPendingRunnable = new Runnable() {
             @Override
             public void run() {
-                // update the main content by replacing fragments
                 Fragment fragment = getHomeFragment();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -128,16 +127,12 @@ public class HomePageActivity extends AppCompatActivity {
             }
         };
 
-        // If mPendingRunnable is not null, then add to the message queue
         mHandler.post(mPendingRunnable);
 
-        // show or hide the fab button
         toggleFab();
 
-        //Closing drawer on item click
         drawer.closeDrawers();
 
-        // refresh toolbar menu
         invalidateOptionsMenu();
 
     }

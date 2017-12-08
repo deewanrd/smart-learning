@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,8 +27,6 @@ import java.util.ArrayList;
 
 public class NotificationsFragment extends Fragment {
     private View rootView;
-    //    private static final String TAG = MainActivity.class.getSimpleName();
-    private TextView txtDetails;
     private EditText inputQuestion, inputOptionA, inputOptionB, inputOptionC, inputOptionD, inputHint, inputAnswer, inputSolution;
     private Spinner inputSubject, inputLevel;
     private DatabaseReference mFirebaseDatabase;
@@ -46,18 +43,17 @@ public class NotificationsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_console, container, false);
-//        txtDetails = (TextView) rootView.findViewById(R.id.ctitle);
-        inputSubject = (Spinner) rootView.findViewById(R.id.csubject);
-        inputQuestion = (EditText) rootView.findViewById(R.id.cquestion);
-        inputLevel = (Spinner) rootView.findViewById(R.id.clevel);
-        inputOptionA = (EditText) rootView.findViewById(R.id.coptionA);
-        inputOptionB = (EditText) rootView.findViewById(R.id.coptionB);
-        inputOptionC = (EditText) rootView.findViewById(R.id.coptionC);
-        inputOptionD = (EditText) rootView.findViewById(R.id.coptionD);
-        inputHint = (EditText) rootView.findViewById(R.id.chint);
-        inputAnswer = (EditText) rootView.findViewById(R.id.canswer);
-        inputSolution = (EditText) rootView.findViewById(R.id.csolution);
-        Button btnSave = (Button) rootView.findViewById(R.id.btn_save);
+        inputSubject = rootView.findViewById(R.id.csubject);
+        inputQuestion = rootView.findViewById(R.id.cquestion);
+        inputLevel = rootView.findViewById(R.id.clevel);
+        inputOptionA = rootView.findViewById(R.id.coptionA);
+        inputOptionB = rootView.findViewById(R.id.coptionB);
+        inputOptionC = rootView.findViewById(R.id.coptionC);
+        inputOptionD = rootView.findViewById(R.id.coptionD);
+        inputHint = rootView.findViewById(R.id.chint);
+        inputAnswer = rootView.findViewById(R.id.canswer);
+        inputSolution = rootView.findViewById(R.id.csolution);
+        Button btnSave = rootView.findViewById(R.id.btn_save);
         FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("Engineering").child("Topics");
         topicsList = new ArrayList<>();
@@ -73,13 +69,10 @@ public class NotificationsFragment extends Fragment {
                     subjectArray.add(topicsList.get(i).getName());
                 }
 
-                Spinner spinner = (Spinner) rootView.findViewById(R.id.csubject);
-// Create an ArrayAdapter using the string array and a default spinner layout
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                Spinner spinner = rootView.findViewById(R.id.csubject);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                         android.R.layout.simple_spinner_item, subjectArray);
-// Specify the layout to use when the list of choices appears
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
                 spinner.setAdapter(adapter);
             }
 
@@ -93,15 +86,11 @@ public class NotificationsFragment extends Fragment {
         levelArray.add("Medium");
         levelArray.add("Hard");
         Spinner spinnerLevel = rootView.findViewById(R.id.clevel);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_spinner_item, levelArray);
-// Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         spinnerLevel.setAdapter(adapter);
 
-        // get reference to 'users' node
         mFirebaseDatabase = mFirebaseInstance.getReference("Engineering").child("Questions");
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +106,7 @@ public class NotificationsFragment extends Fragment {
                 String answer = inputAnswer.getText().toString();
                 String solution = inputSolution.getText().toString();
                 if (subject.isEmpty() || question.isEmpty() || level.isEmpty() || optionA.isEmpty() || optionB.isEmpty() || optionC.isEmpty() || optionD.isEmpty() || hint.isEmpty() || answer.isEmpty() || solution.isEmpty()) {
-                    Toast.makeText(getActivity(), "Fill all the fileds", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Fill all the fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 userId = mFirebaseDatabase.push().getKey();
@@ -125,7 +114,6 @@ public class NotificationsFragment extends Fragment {
                 Question q = new Question(question, optionA, optionB, optionC, optionD, hint, solution, answer);
                 mFirebaseDatabase.child(subject).child(level).child(userId).setValue(q);
                 Toast.makeText(getActivity(), "Saved Successfully", Toast.LENGTH_SHORT).show();
-
 
                 inputQuestion.setText("");
                 inputOptionA.setText("");
@@ -135,8 +123,6 @@ public class NotificationsFragment extends Fragment {
                 inputAnswer.setText("");
                 inputHint.setText("");
                 inputSolution.setText("");
-
-
             }
         });
         return rootView;

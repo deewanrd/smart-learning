@@ -44,7 +44,6 @@ public class ArticlesFragment extends Fragment {
             }
 
             public boolean onKeyDown(int keyCode, KeyEvent event) {
-                // Check if the key event was the Back button and if there's history
                 if ((keyCode == KeyEvent.KEYCODE_BACK) && wv1.canGoBack()) {
                     wv1.goBack();
                     return true;

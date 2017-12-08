@@ -36,9 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         if (firebaseAuth.getCurrentUser() != null) {
-            //close this activity
             finish();
-            //opening profile activity
             startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
         }
 
@@ -63,10 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-//                                progressDialog.dismiss();
-                                //if the task is successfull
                                 if (task.isSuccessful()) {
-                                    //start the profile activity
                                     finish();
                                     startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
                                 } else {
