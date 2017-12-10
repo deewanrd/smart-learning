@@ -22,7 +22,7 @@
         android:layout_toEndOf="@id/iv_topic_image"
         android:padding="10dp"
         android:textStyle="bold"
-        app:textFontPath="fonts/CaviarDreams.ttf"
+        app:textFontPath="fonts/Exo-Regular.ttf"
         tools:ignore="RelativeOverlap" />
 
     <ImageView
