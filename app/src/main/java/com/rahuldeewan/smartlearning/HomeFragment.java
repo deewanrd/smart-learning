@@ -93,13 +93,13 @@ public class HomeFragment extends Fragment {
         int[] covers = new int[]{
                 R.drawable.category1,
                 R.drawable.category2,
-                R.drawable.category3,
+//                R.drawable.category3,
                 R.drawable.category4,
                 R.drawable.category5,
-                R.drawable.category6,
-                R.drawable.category7,
-                R.drawable.category8,
-                R.drawable.category9,
+//                R.drawable.category6,
+//                R.drawable.category7,
+//                R.drawable.category8,
+//                R.drawable.category9,
         };
 
         Categories a = new Categories("Articles", covers[0]);
@@ -108,26 +108,26 @@ public class HomeFragment extends Fragment {
         a = new Categories("Engineering", covers[1]);
         categoryList.add(a);
 
-        a = new Categories("Quizzes", covers[2]);
+//        a = new Categories("Quizzes", covers[2]);
+//        categoryList.add(a);
+
+        a = new Categories("Coding Problems", covers[2]);
         categoryList.add(a);
 
-        a = new Categories("Coding Problems", covers[3]);
+        a = new Categories("General Knowledge", covers[3]);
         categoryList.add(a);
 
-        a = new Categories("General Knowledge", covers[4]);
-        categoryList.add(a);
-
-        a = new Categories("School", covers[5]);
-        categoryList.add(a);
-
-        a = new Categories("Around the world", covers[6]);
-        categoryList.add(a);
-
-        a = new Categories("Random", covers[7]);
-        categoryList.add(a);
-
-        a = new Categories("Coming Soon", covers[8]);
-        categoryList.add(a);
+//        a = new Categories("School", covers[5]);
+//        categoryList.add(a);
+//
+//        a = new Categories("Around the world", covers[6]);
+//        categoryList.add(a);
+//
+//        a = new Categories("Random", covers[7]);
+//        categoryList.add(a);
+//
+//        a = new Categories("Coming Soon", covers[8]);
+//        categoryList.add(a);
 
 
         adapter.notifyDataSetChanged();

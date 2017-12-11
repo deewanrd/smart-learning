@@ -22,7 +22,8 @@
         <activity android:name=".QuestionListActivity" />
         <activity android:name=".CustomDialog" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".SplashActivity"
             android:noHistory="true"

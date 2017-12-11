@@ -52,10 +52,10 @@ public class HomePageActivity extends AppCompatActivity {
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        fab = findViewById(R.id.fab);
+//        fab = findViewById(R.id.fab);
 
         View navHeader = navigationView.getHeaderView(0);
-        txtName = navHeader.findViewById(R.id.name);
+//        txtName = navHeader.findViewById(R.id.name);
         txtWebsite = navHeader.findViewById(R.id.website);
         ImageView imgNavHeaderBg = navHeader.findViewById(R.id.img_header_bg);
         ImageView imgProfile = navHeader.findViewById(R.id.img_profile);
@@ -68,12 +68,12 @@ public class HomePageActivity extends AppCompatActivity {
         });
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Some action performed", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(), "Some action performed", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         auth = FirebaseAuth.getInstance();
         loadNavHeader();
@@ -91,10 +91,10 @@ public class HomePageActivity extends AppCompatActivity {
     private void loadNavHeader() {
 
         if (auth.getCurrentUser() == null) {
-            txtName.setText("Login to display name");
+//            txtName.setText("Login to display name");
             txtWebsite.setText("Login first");
         } else {
-            txtName.setText("XYZ");
+//            txtName.setText("XYZ");
             txtWebsite.setText(auth.getCurrentUser().getEmail());
         }
 
@@ -112,7 +112,7 @@ public class HomePageActivity extends AppCompatActivity {
         if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
             drawer.closeDrawers();
 
-            toggleFab();
+//            toggleFab();
             return;
         }
         Runnable mPendingRunnable = new Runnable() {
@@ -129,7 +129,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         mHandler.post(mPendingRunnable);
 
-        toggleFab();
+//        toggleFab();
 
         drawer.closeDrawers();
 

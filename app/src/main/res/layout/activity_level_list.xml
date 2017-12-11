@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        app:gp_color="@android:color/holo_red_light"
+        app:gp_color="@android:color/holo_orange_light"
         app:gp_duration="800"
         app:gp_figure_padding="8dp"
         app:gp_number_of_angles="10"
