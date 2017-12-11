@@ -3,13 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEA600"
     tools:context="com.rahuldeewan.smartlearning.SplashActivity">
 
+    <TextView
+        android:id="@+id/textiew_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Smart Learning"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp" />
+
+
     <ImageView
+        android:id="@+id/image_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/hint"
+        android:src="@drawable/smartlogo"
         tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/textview_caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:text="Making Learning Easy"
+        android:textAlignment="center"
+        android:textColor="#003366"
+        android:textSize="20sp" />
 
 </RelativeLayout>

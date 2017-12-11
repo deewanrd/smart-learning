@@ -42,7 +42,8 @@
         <activity
             android:name=".ProfileActivity"
             android:label="Profile" />
-        <activity android:name=".ArticlesActivity" />
+        <activity android:name=".ArticlesActivity"
+            android:label="Articles"/>
         <activity
             android:name=".HomePageActivity"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -25,7 +25,6 @@ import java.util.List;
  */
 
 public class ArticlesActivity extends AppCompatActivity {
-    private DatabaseReference databaseReference;
     public List<Article> articleList;
     private ViewPager viewPager;
     GeometricProgressView geometricProgressView;
@@ -34,15 +33,11 @@ public class ArticlesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_articles);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Articles").child("gfg");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Articles").child("gfg");
         articleList = new ArrayList<>();
         viewPager = findViewById(R.id.viewPagerArticles);
         geometricProgressView = findViewById(R.id.geometric_progress_view);
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
         geometricProgressView.setVisibility(View.VISIBLE);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
