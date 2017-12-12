@@ -51,8 +51,9 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_list);
         Intent i = getIntent();
-         level_name = i.getStringExtra("Level_name");
-         topic_name = i.getStringExtra("Topic_name");
+        level_name = i.getStringExtra("Level_name");
+        topic_name = i.getStringExtra("Topic_name");
+        getSupportActionBar().setTitle(topic_name + " : " + level_name);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("questions").child(topic_name).child(level_name);
 
         questionList = new ArrayList<>();

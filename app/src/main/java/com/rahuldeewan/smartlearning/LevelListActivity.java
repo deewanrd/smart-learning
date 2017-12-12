@@ -17,14 +17,12 @@ import net.bohush.geometricprogressview.GeometricProgressView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class LevelListActivity extends AppCompatActivity {
 
     private List<Level> levelList;
     private LevelAdapter levelAdapter;
     private ListView levelListView;
-    private Logger logger;
     GeometricProgressView geometricProgressView;
 
     @Override
@@ -32,11 +30,8 @@ public class LevelListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_list);
 
-        logger = Logger.getLogger("LevelListActivity");
-
         Intent intent = getIntent();
         final String topicName = intent.getStringExtra("Topic_Name");
-        logger.info(topicName);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("levels");
         levelList = new ArrayList<>();
         levelListView = findViewById(R.id.listview_level);
@@ -49,7 +44,6 @@ public class LevelListActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 geometricProgressView.setVisibility(View.GONE);
                 levelList.clear();
-                logger.info(dataSnapshot + "12345678");
                 for (DataSnapshot levelKey : dataSnapshot.getChildren()) {
                     Level currentLevel = levelKey.getValue(Level.class);
                     levelList.add(currentLevel);
