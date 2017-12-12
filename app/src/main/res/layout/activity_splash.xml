@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FEA600"
     tools:context="com.rahuldeewan.smartlearning.SplashActivity">
 
-    <TextView
+    <com.an.customfontview.CustomTextView
         android:id="@+id/textiew_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Smart Learning"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp" />
-
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:textFontPath="fonts/LobsterTwo-Italic.otf" />
 
     <ImageView
         android:id="@+id/image_logo"
@@ -31,9 +33,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="70dp"
-        android:text="Making Learning Easy"
+        android:fontFamily="cursive"
+        android:text="A Learner's Pocket Guide"
         android:textAlignment="center"
         android:textColor="#003366"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

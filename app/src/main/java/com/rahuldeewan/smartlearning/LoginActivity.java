@@ -1,6 +1,8 @@
 package com.rahuldeewan.smartlearning;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -40,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
         }
 
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#FF4081"));
+        getSupportActionBar().setBackgroundDrawable(colorDrawable);
         ((DefaultLoginView) loginView.getLoginView()).setListener(new DefaultLoginView.DefaultLoginViewListener() {
             @Override
             public void onLogin(TextInputLayout loginUser, TextInputLayout loginPass) {

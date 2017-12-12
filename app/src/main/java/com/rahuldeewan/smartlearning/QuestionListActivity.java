@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,7 +27,6 @@ import net.bohush.geometricprogressview.GeometricProgressView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 
 public class QuestionListActivity extends AppCompatActivity implements View.OnClickListener {
@@ -34,7 +34,6 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
     private List<Question> questionList;
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
-    Logger logger;
     static int count = 0;
     static int size = 0;
     GeometricProgressView geometricProgressView;
@@ -43,6 +42,7 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
     String hint = "";
     String solution = "";
     CustomDialog customDialog;
+    Toolbar toolbar;
     static String level_name;
     static String topic_name;
 
@@ -57,8 +57,7 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("questions").child(topic_name).child(level_name);
 
         questionList = new ArrayList<>();
-        logger = Logger.getLogger("QuestionListActivity");
-        logger.info(level_name);
+        toolbar = findViewById(R.id.toolbar_activity);
         viewPager = findViewById(R.id.view_pager);
         geometricProgressView = findViewById(R.id.geometric_progress_view);
         spinnerQuestion = findViewById(R.id.spinner_question_no);
@@ -123,7 +122,7 @@ public class QuestionListActivity extends AppCompatActivity implements View.OnCl
 
             @Override
             public void onPageSelected(int position) {
-                logger.info("Page Selected" + getFragmentManager().findFragmentById(position));
+                toolbar.setVisibility(View.VISIBLE);
                 spinnerQuestion.setSelection(position);
                 hint = questionList.get(position).getHint();
                 solution = questionList.get(position).getSolution();

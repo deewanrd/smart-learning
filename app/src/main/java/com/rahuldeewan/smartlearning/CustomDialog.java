@@ -94,7 +94,7 @@ public class CustomDialog extends Dialog {
         String date;
         SimpleDateFormat formatter;
 
-        formatter = new SimpleDateFormat("d MMM yy");
+        formatter = new SimpleDateFormat("dd MMM, yyyy");
         today= new Date();
         date = formatter.format(today);
         String uid;

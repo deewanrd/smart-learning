@@ -5,72 +5,77 @@
     android:id="@+id/relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginVertical="10dp"
     android:orientation="vertical"
     tools:context="com.rahuldeewan.smartlearning.TopicListActivity"
     tools:targetApi="o">
 
     <LinearLayout
-        android:id="@+id/prof_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <com.an.customfontview.CustomTextView
-            android:id="@+id/user_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="@string/user_id"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:textFontPath="fonts/CaviarDreams.ttf"
-            tools:ignore="RelativeOverlap" />
-
-        <com.an.customfontview.CustomTextView
-            android:id="@+id/tv_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:textFontPath="fonts/CaviarDreams.ttf"
-            tools:ignore="RelativeOverlap" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/prof_email"
-        android:layout_width="wrap_content"
+        android:id="@+id/xyz"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/prof_id">
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/border_dialog"
+        android:orientation="vertical"
+        android:padding="5dp">
 
-        <com.an.customfontview.CustomTextView
-            android:id="@+id/email_id"
+        <LinearLayout
+            android:id="@+id/prof_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="@string/email_id"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:textFontPath="fonts/CaviarDreams.ttf"
-            tools:ignore="RelativeOverlap" />
+            android:layout_marginTop="5dp">
 
-        <com.an.customfontview.CustomTextView
-            android:id="@+id/tv_email"
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/user_id"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:ignore="RelativeOverlap" />
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textSize="15sp"
+                tools:ignore="RelativeOverlap" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/prof_email"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:textFontPath="fonts/CaviarDreams.ttf"
-            tools:ignore="RelativeOverlap" />
+            android:layout_height="wrap_content">
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/email_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:padding="5dp"
+                android:text="@string/email_id"
+                android:textSize="15sp"
+                tools:ignore="RelativeOverlap" />
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="15sp"
+                tools:ignore="RelativeOverlap" />
+        </LinearLayout>
     </LinearLayout>
+
 
     <ListView
         android:id="@+id/listview_result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/prof_email"
+        android:layout_below="@+id/xyz"
         android:layout_marginHorizontal="5dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"

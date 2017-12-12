@@ -1,11 +1,15 @@
 package com.rahuldeewan.smartlearning;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.logging.Logger;
@@ -30,6 +34,8 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
     private TextView tvOptionC;
     private TextView tvOptionD;
     private View rootView;
+    private ScrollView scrollView;
+    private Toolbar toolbar;
     private static Logger logger = Logger.getLogger("QuestionListFragment");
     //array to keep check visit to question
     boolean[] arr = new boolean[size];
@@ -54,6 +60,7 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
         return fragment;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,15 +68,29 @@ public class QuestionListFragment extends Fragment implements View.OnClickListen
             rootView = inflater.inflate(R.layout.fragment_question_list, container, false);
             TextView tvQuestionNo = rootView.findViewById(R.id.tv_question_no);
             TextView tvQuestion = rootView.findViewById(R.id.tv_question);
+            toolbar = getActivity().findViewById(R.id.toolbar_activity);
             tvOptionA = rootView.findViewById(R.id.tv_option_a);
             tvOptionB = rootView.findViewById(R.id.tv_option_b);
             tvOptionC = rootView.findViewById(R.id.tv_option_c);
             tvOptionD = rootView.findViewById(R.id.tv_option_d);
+            scrollView = rootView.findViewById(R.id.scroll_view);
 
             tvOptionA.setOnClickListener(this);
             tvOptionB.setOnClickListener(this);
             tvOptionC.setOnClickListener(this);
             tvOptionD.setOnClickListener(this);
+            toolbar.setVisibility(View.VISIBLE);
+            scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+                    int x = i1 - i3;
+                    if (x > 0) {
+                        toolbar.setVisibility(View.GONE);
+                    } else {
+                        toolbar.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
 
             tvQuestionNo.setText(getArguments().getString(QUESTION_NO));
             tvQuestion.setText(getArguments().getString(QUESTION));
