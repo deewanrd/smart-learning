@@ -37,8 +37,8 @@
 
             <ImageView
                 android:id="@+id/iv_hint"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
                 android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
@@ -50,6 +50,7 @@
                 android:layout_width="1dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@android:color/black" />
 
             <ImageView
@@ -88,6 +89,8 @@
                 android:id="@+id/iv_submit"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
                 android:src="@drawable/icon_submit" />
 
         </LinearLayout>
