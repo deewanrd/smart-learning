@@ -57,7 +57,7 @@
                 android:id="@+id/iv_solution"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
@@ -75,7 +75,7 @@
                 android:id="@+id/spinner_question_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_marginTop="15dp"
                 android:textAlignment="center" />
 
             <View
@@ -90,7 +90,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="5dp"
                 android:src="@drawable/icon_submit" />
 
         </LinearLayout>

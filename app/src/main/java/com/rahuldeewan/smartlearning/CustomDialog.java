@@ -3,6 +3,7 @@ package com.rahuldeewan.smartlearning;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -79,6 +80,7 @@ public class CustomDialog extends Dialog {
                 public void onClick(View view) {
                     submit();
                     activity.finish();
+                    getContext().startActivity(new Intent(getContext(),TopicListActivity.class));
                 }
             });
         }
